@@ -589,7 +589,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 634,
+                            "referencedDeclaration": 611,
                             "src": "576:4:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_PlayerFactory_$232",
@@ -1248,7 +1248,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 634,
+                            "referencedDeclaration": 611,
                             "src": "576:4:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_PlayerFactory_$232",
@@ -1443,5 +1443,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-07-21T03:28:36.456Z"
+  "updatedAt": "2018-07-22T04:04:30.922Z"
 }
