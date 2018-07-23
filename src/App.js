@@ -1,20 +1,19 @@
-import React, { Component } from 'react'
-import MatchFactoryContract from '../build/contracts/MatchFactory.json'
+import React, { Component } from 'react';
+import MatchFactoryContract from '../build/contracts/MatchFactory.json';
 
-import getWeb3 from './utils/getWeb3'
+import getWeb3 from './utils/getWeb3';
 import Match from './Match/Match';
 
-import './css/oswald.css'
-import './css/open-sans.css'
-import './css/pure-min.css'
-import './App.css'
+import './css/oswald.css';
+import './css/open-sans.css';
+import './css/pure-min.css';
+import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      storageValue: 0,
       matches: [
         {
           "address": 123456789,
@@ -44,6 +43,7 @@ class App extends Component {
       ],
       web3: null,
       matchFactoryInstance: null,
+      matchFactory: null
     }
 
     this.instantiateContract = this.instantiateContract.bind(this);
@@ -53,6 +53,7 @@ class App extends Component {
 
     getWeb3
     .then(results => {
+      console.log('Succesful finding web3.')
       this.setState({
         web3: results.web3
       })
@@ -68,29 +69,33 @@ class App extends Component {
   instantiateContract() {
     const contract = require('truffle-contract')
     const matchFactory = contract(MatchFactoryContract)
+    this.setState ({
+      matchFactory: matchFactory
+    })
     matchFactory.setProvider(this.state.web3.currentProvider)
+    let matchCreationEvent
+    let matchDeletionEvent
 
     // Get accounts.
-    this.state.web3.eth.getAccounts((error, accounts) => {
-      matchFactory.deployed().then((instance) => {
-        this.setState ({
-          matchFactoryInstance: instance
-        }) 
+    matchFactory.deployed().then((instance) => {
+      this.setState ({
+        matchFactoryInstance: instance
+      }) 
+      matchCreationEvent = instance.MatchCreated();
+      matchCreationEvent.watch((error, result) => {
+        if (!error) {
+          console.log(result)
+          this.addMatch(result)
+        } else {
+          console.log(error)
+        }
       })
-    })
-    let matchCreationEvent = this.state.matchFactoryInstance.MatchCreated()
-    matchCreationEvent.watch(function(error, result) {
-      if (!error) {
-        console.log(result)
-        this.addMatch(result)
-      }
-    })
-    let matchDeletionEvent = this.state.matchFactoryInstance.MatchDeleted()
-    matchDeletionEvent.watch(function(error, result) {
-      if (!error) {
-        console.log(result)
-        this.deleteMatch(result)
-      }
+      matchDeletionEvent = instance.MatchDeleted();
+      matchDeletionEvent.watch((error, result) => {
+        if (!error) {
+          this.deleteMatch(result)
+        }
+      })
     })
   }
 
@@ -105,14 +110,18 @@ class App extends Component {
     });
   }
 
-  deleteMatch() {
+  deleteMatch = (props) => {
 
   }
 
-  onMatchSubmit(event) {
-    // this.state.matchFactoryInstance.createMatch(
-    //   event.target.team1.value, 
-    //   event.target.team2.value, this.state.account)
+  onMatchSubmit = (event) => {
+    event.preventDefault()
+    this.state.web3.eth.getAccounts((error, accounts) => {
+      // Stores a given value, 5 by default.
+      return this.state.matchFactoryInstance.createMatch(
+        "usa", 
+        "china", {from: accounts[0], gas: 5000000}).call()
+    })
   }
 
   render() {
@@ -132,11 +141,11 @@ class App extends Component {
           <form>
             <label>
               Team 1:
-              <input type="text" name="team1" />
+              <input type="text" ref="team1" />
             </label>
             <label>
               Team 2:
-              <input type="text" name="team2" />
+              <input type="text" ref="team2" />
             </label>
             <input type="submit" onSubmit={ this.onMatchSubmit } value="Submit" />
           </form>
