@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
+import MatchFactoryContract from '../build/contracts/MatchFactory.json'
+
 import getWeb3 from './utils/getWeb3'
+import Match from './Match/Match';
 
 import './css/oswald.css'
 import './css/open-sans.css'
@@ -13,14 +15,41 @@ class App extends Component {
 
     this.state = {
       storageValue: 0,
-      web3: null
+      matches: [
+        {
+          "address": 123456789,
+          "team1": "france",
+          "team2": "croatia"
+        },
+        {
+          "address": 828181,
+          "team1": "endland",
+          "team2": "croatia"
+        },
+        {
+          "address": 1112101,
+          "team1": "france",
+          "team2": "belgium"
+        },
+        {
+          "address": 191911,
+          "team1": "croatia",
+          "team2": "russia"
+        },
+        {
+          "address": 119110,
+          "team1": "france",
+          "team2": "argentina"
+        }
+      ],
+      web3: null,
+      matchFactoryInstance: null,
     }
-    this.addToSimpleStorage = this.addToSimpleStorage.bind(this);
-  }
 
-  componentWillMount() {
-    // Get network provider and web3 instance.
-    // See utils/getWeb3 for more info.
+    this.instantiateContract = this.instantiateContract.bind(this);
+    this.addMatch = this.addMatch.bind(this);
+    this.deleteMatch = this.deleteMatch.bind(this);
+    this.onMatchSubmit = this.onMatchSubmit.bind(this);
 
     getWeb3
     .then(results => {
@@ -37,116 +66,84 @@ class App extends Component {
   }
 
   instantiateContract() {
-    /*
-     * SMART CONTRACT EXAMPLE
-     *
-     * Normally these functions would be called in the context of a
-     * state management library, but for convenience I've placed them here.
-     */
-
     const contract = require('truffle-contract')
-    const simpleStorage = contract(SimpleStorageContract)
-    simpleStorage.setProvider(this.state.web3.currentProvider)
-
-    // Declaring this for later so we can chain functions on SimpleStorage.
-    var simpleStorageInstance
+    const matchFactory = contract(MatchFactoryContract)
+    matchFactory.setProvider(this.state.web3.currentProvider)
 
     // Get accounts.
     this.state.web3.eth.getAccounts((error, accounts) => {
-      simpleStorage.deployed().then((instance) => {
-        simpleStorageInstance = instance
-
-        this.setState(prevState => ({
-          ...prevState,
-          accounts,
-          simpleStorageInstance
-        }));
-
-        // Stores a given value, 5 by default.
-        return simpleStorageInstance.set(5, {from: accounts[0]})
-      }).then((result) => {
-        // Get the value from the contract to prove it worked.
-        return simpleStorageInstance.get.call(accounts[0])
-      }).then((result) => {
-        // Update state with the result.
-        return this.setState(prevState => ({
-          ...prevState,
-          storageValue: result.c[0]
-        }))
+      matchFactory.deployed().then((instance) => {
+        this.setState ({
+          matchFactoryInstance: instance
+        }) 
       })
+    })
+    let matchCreationEvent = this.state.matchFactoryInstance.MatchCreated()
+    matchCreationEvent.watch(function(error, result) {
+      if (!error) {
+        console.log(result)
+        this.addMatch(result)
+      }
+    })
+    let matchDeletionEvent = this.state.matchFactoryInstance.MatchDeleted()
+    matchDeletionEvent.watch(function(error, result) {
+      if (!error) {
+        console.log(result)
+        this.deleteMatch(result)
+      }
     })
   }
 
-  addToSimpleStorage() {
-    if (this.state.simpleStorageInstance && this.state.accounts) {
-      const value = this.storageAmountInput.value;
-      console.log('value to be stored is');
-      console.log(value);
-      this.state.simpleStorageInstance.set(value, {from: this.state.accounts[0]})
-        .then((result) => {
-          return this.state.simpleStorageInstance.get.call(this.state.accounts[0])
-        }).then((result) => {
-          this.setState(prevState => ({
-            ...prevState,
-            storageValue: result.c[0]
-          }));
-        }).catch((err) => {
-          console.log('error');
-          console.log(err);
-        });
-    } else {
-      this.setState(prevState => ({
-        ...prevState,
-        error: new Error('simple storage instance not loaded')
-      }))
-    }
+  addMatch = (props) => {
+    let newArray = this.state.matches.slice();
+    newArray.push({
+      address: props.args.address, 
+      team1: props.args.team1, 
+      team2: props.args.team2});
+    this.setState({
+      matches: newArray
+    });
+  }
+
+  deleteMatch() {
+
+  }
+
+  onMatchSubmit(event) {
+    // this.state.matchFactoryInstance.createMatch(
+    //   event.target.team1.value, 
+    //   event.target.team2.value, this.state.account)
   }
 
   render() {
-    return (
-      <div className="App">
-        <nav className="navbar pure-menu pure-menu-horizontal">
-            <a href="#" className="pure-menu-heading pure-menu-link">Truffle Box</a>
-        </nav>
-
-        <main className="container">
-          <div className="pure-g">
-            <div className="pure-u-1-1">
-              <h1>Good to Go!</h1>
-              <p>Your Truffle Box is installed and ready.</p>
-              <hr />
-              <h2>Smart Contract Example</h2>
-              <p>If your contracts compiled and migrated successfully, below will show a stored value of 5 (by default).</p>
-              <p>Try changing the value stored on <strong>line 59</strong> of App.js.</p>
-              <p>The stored value is: {this.state.storageValue}</p>
-              <hr />
-              {/* <h2>Accounts in this web3</h2>
-              <pre>
-                {this.state.accounts && JSON.stringify(this.state.accounts)}
-              </pre> */}
-              <h2>Interactive Dapp Example</h2>
-              <p>
-                You should be able to use this form to interact with the storage smart contract.
-              </p>
-              <form className="pure-form pure-form-stacked">
-                <fieldset>
-                  <label htmlFor="storage">Storage Amount</label>
-                  <input id="storage" type="number" ref={c => { this.storageAmountInput = c }} />
-                  <button
-                    className="pure-button"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      this.addToSimpleStorage()
-                    }}
-                  >
-                    Set Storage
-                  </button>
-                </fieldset>
-              </form>
-              <p>If you followed the direction in README.md and added your Moesif Application ID, you should see all JSON-RPC calls captured in your Moesif Account for analysis.</p>
-            </div>
+    const matchElements = this.state.matches.map(match => {
+      return (
+          <div key={match.address}>
+          <Match
+              address={match.address}
+              team1={match.team1}
+              team2={match.team2} />
           </div>
-        </main>
+      )
+    });
+    return (
+      <div>
+        <div>
+          <form>
+            <label>
+              Team 1:
+              <input type="text" name="team1" />
+            </label>
+            <label>
+              Team 2:
+              <input type="text" name="team2" />
+            </label>
+            <input type="submit" onSubmit={ this.onMatchSubmit } value="Submit" />
+          </form>
+        </div>
+        <div>
+            {matchElements}
+        </div>
       </div>
     );
   }
