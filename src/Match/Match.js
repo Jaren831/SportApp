@@ -2,6 +2,8 @@ import React from 'react';
 
 import './Match.css';
 
+//need to make this react component
+
 const match = ( props ) => {
     return (
         <div className="Match">
