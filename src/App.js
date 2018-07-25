@@ -59,30 +59,20 @@ class App extends Component {
         if (!error) {
           if (result.event === "MatchCreated") {
             console.log(result)
-            this.addMatch(result.args)
+            let newArray = this.state.matches.slice();
+            newArray.push({
+              address: result.args.matchAddress, 
+              team1: result.args.team1, 
+              team2: result.arge.team2});
+            this.setState({
+              matches: newArray
+            });          
           }
         } else {
           console.log(error)
         }
-      })
-      const matchDeletionEvent = this.state.matchFactoryInstance.MatchDeleted();
-      matchDeletionEvent.watch((error, result) => {
-        if (!error) {
-          this.deleteMatch(result)
-        }
-      })
+      }) 
     })
-  }
-
-  addMatch = (props) => {
-    let newArray = this.state.matches.slice();
-    newArray.push({
-      address: props.matchAddress, 
-      team1: props.team1, 
-      team2: props.team2});
-    this.setState({
-      matches: newArray
-    });
   }
 
   onMatchSubmit = (event) => {
