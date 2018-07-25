@@ -9,6 +9,8 @@ import './css/open-sans.css';
 import './css/pure-min.css';
 import './App.css';
 
+//truffle network --clean
+
 class App extends Component {
   constructor(props) {
     super(props)
