@@ -24,7 +24,6 @@ class App extends Component {
 
     this.instantiateContract = this.instantiateContract.bind(this);
     this.addMatch = this.addMatch.bind(this);
-    this.deleteMatch = this.deleteMatch.bind(this);
     this.onMatchSubmit = this.onMatchSubmit.bind(this);
 
     getWeb3
@@ -49,23 +48,24 @@ class App extends Component {
     this.setState ({
       matchFactory: matchFactory
     })
-    let matchCreationEvent
-    let matchDeletionEvent
 
     // Get accounts.
     this.state.matchFactory.deployed().then((instance) => {
       this.setState ({
         matchFactoryInstance: instance
       }) 
-      matchCreationEvent = this.state.matchFactoryInstance.MatchCreated();
-      matchCreationEvent.watch((error, result) => {
+      const matchFactoryEvent = this.state.matchFactoryInstance.allEvents({fromBlock: 0, toBlock: 'latest'});
+      matchFactoryEvent.watch((error, result) => {
         if (!error) {
-          this.addMatch(result)
+          if (result.event === "MatchCreated") {
+            console.log(result)
+            this.addMatch(result.args)
+          }
         } else {
           console.log(error)
         }
       })
-      matchDeletionEvent = this.state.matchFactoryInstance.MatchDeleted();
+      const matchDeletionEvent = this.state.matchFactoryInstance.MatchDeleted();
       matchDeletionEvent.watch((error, result) => {
         if (!error) {
           this.deleteMatch(result)
@@ -77,16 +77,12 @@ class App extends Component {
   addMatch = (props) => {
     let newArray = this.state.matches.slice();
     newArray.push({
-      address: props.args.matchAddress, 
-      team1: props.args.team1, 
-      team2: props.args.team2});
+      address: props.matchAddress, 
+      team1: props.team1, 
+      team2: props.team2});
     this.setState({
       matches: newArray
     });
-  }
-
-  deleteMatch = (props) => {
-
   }
 
   onMatchSubmit = (event) => {
