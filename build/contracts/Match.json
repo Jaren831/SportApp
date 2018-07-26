@@ -202,7 +202,7 @@
         "id": 2,
         "nodeType": "ImportDirective",
         "scope": 46,
-        "sourceUnit": 601,
+        "sourceUnit": 525,
         "src": "26:20:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -213,7 +213,7 @@
         "id": 3,
         "nodeType": "ImportDirective",
         "scope": 46,
-        "sourceUnit": 656,
+        "sourceUnit": 580,
         "src": "47:27:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -224,7 +224,7 @@
         "id": 4,
         "nodeType": "ImportDirective",
         "scope": 46,
-        "sourceUnit": 401,
+        "sourceUnit": 325,
         "src": "75:24:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -238,10 +238,10 @@
               "id": 5,
               "name": "TeamFactory",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 655,
+              "referencedDeclaration": 579,
               "src": "274:11:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_TeamFactory_$655",
+                "typeIdentifier": "t_contract$_TeamFactory_$579",
                 "typeString": "contract TeamFactory"
               }
             },
@@ -251,8 +251,8 @@
           }
         ],
         "contractDependencies": [
-          255,
-          655
+          179,
+          579
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -260,8 +260,8 @@
         "id": 45,
         "linearizedBaseContracts": [
           45,
-          655,
-          255
+          579,
+          179
         ],
         "name": "Match",
         "nodeType": "ContractDefinition",
@@ -364,7 +364,7 @@
                       "name": "owner",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 173,
+                      "referencedDeclaration": 97,
                       "src": "444:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -670,7 +670,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 203,
+                  "referencedDeclaration": 127,
                   "src": "552:9:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -736,7 +736,7 @@
         "id": 2,
         "nodeType": "ImportDirective",
         "scope": 46,
-        "sourceUnit": 601,
+        "sourceUnit": 525,
         "src": "26:20:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -747,7 +747,7 @@
         "id": 3,
         "nodeType": "ImportDirective",
         "scope": 46,
-        "sourceUnit": 656,
+        "sourceUnit": 580,
         "src": "47:27:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -758,7 +758,7 @@
         "id": 4,
         "nodeType": "ImportDirective",
         "scope": 46,
-        "sourceUnit": 401,
+        "sourceUnit": 325,
         "src": "75:24:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -772,10 +772,10 @@
               "id": 5,
               "name": "TeamFactory",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 655,
+              "referencedDeclaration": 579,
               "src": "274:11:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_TeamFactory_$655",
+                "typeIdentifier": "t_contract$_TeamFactory_$579",
                 "typeString": "contract TeamFactory"
               }
             },
@@ -785,8 +785,8 @@
           }
         ],
         "contractDependencies": [
-          255,
-          655
+          179,
+          579
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -794,8 +794,8 @@
         "id": 45,
         "linearizedBaseContracts": [
           45,
-          655,
-          255
+          579,
+          179
         ],
         "name": "Match",
         "nodeType": "ContractDefinition",
@@ -898,7 +898,7 @@
                       "name": "owner",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 173,
+                      "referencedDeclaration": 97,
                       "src": "444:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -1204,7 +1204,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 203,
+                  "referencedDeclaration": 127,
                   "src": "552:9:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -1249,5 +1249,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-07-25T21:32:11.369Z"
+  "updatedAt": "2018-07-26T14:36:45.672Z"
 }

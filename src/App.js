@@ -23,7 +23,6 @@ class App extends Component {
     }
 
     this.instantiateContract = this.instantiateContract.bind(this);
-    this.addMatch = this.addMatch.bind(this);
     this.onMatchSubmit = this.onMatchSubmit.bind(this);
 
     getWeb3
@@ -63,7 +62,7 @@ class App extends Component {
             newArray.push({
               address: result.args.matchAddress, 
               team1: result.args.team1, 
-              team2: result.arge.team2});
+              team2: result.args.team2});
             this.setState({
               matches: newArray
             });          
