@@ -11,7 +11,7 @@ import './App.css';
 
 //truffle network --clean
 
-class App extends Component {
+class MatchContainer extends Component {
   constructor(props) {
     super(props)
 
@@ -24,6 +24,7 @@ class App extends Component {
 
     this.instantiateContract = this.instantiateContract.bind(this);
     this.onMatchSubmit = this.onMatchSubmit.bind(this);
+
     getWeb3
     .then(results => {
       console.log('Succesful finding web3.')
