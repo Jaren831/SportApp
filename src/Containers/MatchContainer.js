@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Match from '../Components/Match.js';
-import MatchContract from '../build/contracts/Match.json';
+import MatchContract from '../../build/contracts/Match.json';
+import getWeb3 from '../utils/getWeb3';
 
 class MatchContainer extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      web3: props.web3,
+      web3: null,
       matchAddress: props.address,
       team1Address: null,
       team1Name: null,
@@ -15,8 +16,19 @@ class MatchContainer extends Component {
       team2Name: null
     }
 
-    this.instantiateContract = this.populateList.bind(this);
-    this.instantiateContract()  
+    getWeb3
+    .then(results => {
+      console.log('Succesful finding web3.')
+      this.setState({
+        web3: results.web3
+      })
+      this.instantiateContract()  
+    })
+    .catch(() => {
+      console.log('Error finding web3.')
+    }) 
+
+    this.instantiateContract = this.instantiateContract.bind(this);
 }
 
   instantiateContract() {
@@ -25,7 +37,7 @@ class MatchContainer extends Component {
     match.setProvider(this.state.web3.currentProvider)
     match.at(this.state.matchAddress).then((instance) => {
         const teamCreateEvent = instance.allEvents({fromBlock: 0, toBlock: 'latest'});
-        teamCreateEvent.get((error, result) => {
+        teamCreateEvent.watch((error, result) => {
             if (!error) {
                     this.setState ({
                         team1Address: result[0].args.teamAddress,
@@ -43,11 +55,11 @@ class MatchContainer extends Component {
   render() {
     return (
         <Match 
-            team1Address = {this.state.team1Address}
-            team2Address = {this.state.team2Address}
-            team1Name = {this.state.team1Name}
-            team2Name = {this.state.team2Name}
-            web3 = {this.state.web3}
+            team1Address={this.state.team1Address}
+            team2Address={this.state.team2Address}
+            team1Name={this.state.team1Name}
+            team2Name={this.state.team2Name}
+            web3={this.state.web3}
         />
     );
   }

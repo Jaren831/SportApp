@@ -109,14 +109,14 @@
     "absolutePath": "/Users/jarenlynch/Ethereum/SportApp/contracts/TeamFactory.sol",
     "exportedSymbols": {
       "TeamFactory": [
-        562
+        566
       ]
     },
-    "id": 563,
+    "id": 567,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 528,
+        "id": 532,
         "literals": [
           "solidity",
           "^",
@@ -129,10 +129,10 @@
       {
         "absolutePath": "/Users/jarenlynch/Ethereum/SportApp/contracts/Team.sol",
         "file": "./Team.sol",
-        "id": 529,
+        "id": 533,
         "nodeType": "ImportDirective",
-        "scope": 563,
-        "sourceUnit": 527,
+        "scope": 567,
+        "sourceUnit": 531,
         "src": "26:20:6",
         "symbolAliases": [],
         "unitAlias": ""
@@ -140,10 +140,10 @@
       {
         "absolutePath": "/Users/jarenlynch/Ethereum/SportApp/contracts/Ownable.sol",
         "file": "./Ownable.sol",
-        "id": 530,
+        "id": 534,
         "nodeType": "ImportDirective",
-        "scope": 563,
-        "sourceUnit": 176,
+        "scope": 567,
+        "sourceUnit": 180,
         "src": "47:23:6",
         "symbolAliases": [],
         "unitAlias": ""
@@ -154,32 +154,32 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 531,
+              "id": 535,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 175,
+              "referencedDeclaration": 179,
               "src": "164:7:6",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$175",
+                "typeIdentifier": "t_contract$_Ownable_$179",
                 "typeString": "contract Ownable"
               }
             },
-            "id": 532,
+            "id": 536,
             "nodeType": "InheritanceSpecifier",
             "src": "164:7:6"
           }
         ],
         "contractDependencies": [
-          175,
-          526
+          179,
+          530
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 562,
+        "id": 566,
         "linearizedBaseContracts": [
-          562,
-          175
+          566,
+          179
         ],
         "name": "TeamFactory",
         "nodeType": "ContractDefinition",
@@ -187,20 +187,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 538,
+            "id": 542,
             "name": "TeamCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 537,
+              "id": 541,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 534,
+                  "id": 538,
                   "indexed": false,
                   "name": "teamAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 538,
+                  "scope": 542,
                   "src": "196:19:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -209,7 +209,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 533,
+                    "id": 537,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "196:7:6",
@@ -223,11 +223,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 536,
+                  "id": 540,
                   "indexed": false,
                   "name": "teamName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 538,
+                  "scope": 542,
                   "src": "217:15:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -236,7 +236,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 535,
+                    "id": 539,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "217:6:6",
@@ -255,21 +255,21 @@
           },
           {
             "body": {
-              "id": 560,
+              "id": 564,
               "nodeType": "Block",
               "src": "298:129:6",
               "statements": [
                 {
                   "assignments": [
-                    546
+                    550
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 546,
+                      "id": 550,
                       "name": "newTeamAddress",
                       "nodeType": "VariableDeclaration",
-                      "scope": 561,
+                      "scope": 565,
                       "src": "308:22:6",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -278,7 +278,7 @@
                         "typeString": "address"
                       },
                       "typeName": {
-                        "id": 545,
+                        "id": 549,
                         "name": "address",
                         "nodeType": "ElementaryTypeName",
                         "src": "308:7:6",
@@ -291,7 +291,7 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 554,
+                  "id": 558,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
@@ -300,14 +300,14 @@
                         "arguments": [
                           {
                             "argumentTypes": null,
-                            "id": 550,
+                            "id": 554,
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 598,
+                            "referencedDeclaration": 602,
                             "src": "350:4:6",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_TeamFactory_$562",
+                              "typeIdentifier": "t_contract$_TeamFactory_$566",
                               "typeString": "contract TeamFactory"
                             }
                           }
@@ -315,11 +315,11 @@
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_TeamFactory_$562",
+                              "typeIdentifier": "t_contract$_TeamFactory_$566",
                               "typeString": "contract TeamFactory"
                             }
                           ],
-                          "id": 549,
+                          "id": 553,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -332,7 +332,7 @@
                           },
                           "typeName": "address"
                         },
-                        "id": 551,
+                        "id": 555,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -348,11 +348,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 552,
+                        "id": 556,
                         "name": "_teamName",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 540,
+                        "referencedDeclaration": 544,
                         "src": "357:9:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -371,7 +371,7 @@
                           "typeString": "string memory"
                         }
                       ],
-                      "id": 548,
+                      "id": 552,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -379,23 +379,23 @@
                       "nodeType": "NewExpression",
                       "src": "333:8:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_string_memory_ptr_$returns$_t_contract$_Team_$526_$",
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_string_memory_ptr_$returns$_t_contract$_Team_$530_$",
                         "typeString": "function (address,string memory) returns (contract Team)"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 547,
+                        "id": 551,
                         "name": "Team",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 526,
+                        "referencedDeclaration": 530,
                         "src": "337:4:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_Team_$526",
+                          "typeIdentifier": "t_contract$_Team_$530",
                           "typeString": "contract Team"
                         }
                       }
                     },
-                    "id": 553,
+                    "id": 557,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -405,7 +405,7 @@
                     "nodeType": "FunctionCall",
                     "src": "333:34:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_Team_$526",
+                      "typeIdentifier": "t_contract$_Team_$530",
                       "typeString": "contract Team"
                     }
                   },
@@ -418,11 +418,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 556,
+                        "id": 560,
                         "name": "newTeamAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 546,
+                        "referencedDeclaration": 550,
                         "src": "394:14:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -431,11 +431,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 557,
+                        "id": 561,
                         "name": "_teamName",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 540,
+                        "referencedDeclaration": 544,
                         "src": "410:9:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -454,18 +454,18 @@
                           "typeString": "string memory"
                         }
                       ],
-                      "id": 555,
+                      "id": 559,
                       "name": "TeamCreated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 538,
+                      "referencedDeclaration": 542,
                       "src": "382:11:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (address,string memory)"
                       }
                     },
-                    "id": 558,
+                    "id": 562,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -479,28 +479,28 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 559,
+                  "id": 563,
                   "nodeType": "EmitStatement",
                   "src": "377:43:6"
                 }
               ]
             },
             "documentation": null,
-            "id": 561,
+            "id": 565,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
             "modifiers": [
               {
                 "arguments": null,
-                "id": 543,
+                "id": 547,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 542,
+                  "id": 546,
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 123,
+                  "referencedDeclaration": 127,
                   "src": "288:9:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -514,15 +514,15 @@
             "name": "createTeam",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 541,
+              "id": 545,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 540,
+                  "id": 544,
                   "name": "_teamName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 561,
+                  "scope": 565,
                   "src": "263:16:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -531,7 +531,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 539,
+                    "id": 543,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "263:6:6",
@@ -548,19 +548,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 544,
+              "id": 548,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "298:0:6"
             },
-            "scope": 562,
+            "scope": 566,
             "src": "243:184:6",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 563,
+        "scope": 567,
         "src": "140:289:6"
       }
     ],
@@ -570,14 +570,14 @@
     "absolutePath": "/Users/jarenlynch/Ethereum/SportApp/contracts/TeamFactory.sol",
     "exportedSymbols": {
       "TeamFactory": [
-        562
+        566
       ]
     },
-    "id": 563,
+    "id": 567,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 528,
+        "id": 532,
         "literals": [
           "solidity",
           "^",
@@ -590,10 +590,10 @@
       {
         "absolutePath": "/Users/jarenlynch/Ethereum/SportApp/contracts/Team.sol",
         "file": "./Team.sol",
-        "id": 529,
+        "id": 533,
         "nodeType": "ImportDirective",
-        "scope": 563,
-        "sourceUnit": 527,
+        "scope": 567,
+        "sourceUnit": 531,
         "src": "26:20:6",
         "symbolAliases": [],
         "unitAlias": ""
@@ -601,10 +601,10 @@
       {
         "absolutePath": "/Users/jarenlynch/Ethereum/SportApp/contracts/Ownable.sol",
         "file": "./Ownable.sol",
-        "id": 530,
+        "id": 534,
         "nodeType": "ImportDirective",
-        "scope": 563,
-        "sourceUnit": 176,
+        "scope": 567,
+        "sourceUnit": 180,
         "src": "47:23:6",
         "symbolAliases": [],
         "unitAlias": ""
@@ -615,32 +615,32 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 531,
+              "id": 535,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 175,
+              "referencedDeclaration": 179,
               "src": "164:7:6",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$175",
+                "typeIdentifier": "t_contract$_Ownable_$179",
                 "typeString": "contract Ownable"
               }
             },
-            "id": 532,
+            "id": 536,
             "nodeType": "InheritanceSpecifier",
             "src": "164:7:6"
           }
         ],
         "contractDependencies": [
-          175,
-          526
+          179,
+          530
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 562,
+        "id": 566,
         "linearizedBaseContracts": [
-          562,
-          175
+          566,
+          179
         ],
         "name": "TeamFactory",
         "nodeType": "ContractDefinition",
@@ -648,20 +648,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 538,
+            "id": 542,
             "name": "TeamCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 537,
+              "id": 541,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 534,
+                  "id": 538,
                   "indexed": false,
                   "name": "teamAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 538,
+                  "scope": 542,
                   "src": "196:19:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -670,7 +670,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 533,
+                    "id": 537,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "196:7:6",
@@ -684,11 +684,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 536,
+                  "id": 540,
                   "indexed": false,
                   "name": "teamName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 538,
+                  "scope": 542,
                   "src": "217:15:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -697,7 +697,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 535,
+                    "id": 539,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "217:6:6",
@@ -716,21 +716,21 @@
           },
           {
             "body": {
-              "id": 560,
+              "id": 564,
               "nodeType": "Block",
               "src": "298:129:6",
               "statements": [
                 {
                   "assignments": [
-                    546
+                    550
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 546,
+                      "id": 550,
                       "name": "newTeamAddress",
                       "nodeType": "VariableDeclaration",
-                      "scope": 561,
+                      "scope": 565,
                       "src": "308:22:6",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -739,7 +739,7 @@
                         "typeString": "address"
                       },
                       "typeName": {
-                        "id": 545,
+                        "id": 549,
                         "name": "address",
                         "nodeType": "ElementaryTypeName",
                         "src": "308:7:6",
@@ -752,7 +752,7 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 554,
+                  "id": 558,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
@@ -761,14 +761,14 @@
                         "arguments": [
                           {
                             "argumentTypes": null,
-                            "id": 550,
+                            "id": 554,
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 598,
+                            "referencedDeclaration": 602,
                             "src": "350:4:6",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_TeamFactory_$562",
+                              "typeIdentifier": "t_contract$_TeamFactory_$566",
                               "typeString": "contract TeamFactory"
                             }
                           }
@@ -776,11 +776,11 @@
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_TeamFactory_$562",
+                              "typeIdentifier": "t_contract$_TeamFactory_$566",
                               "typeString": "contract TeamFactory"
                             }
                           ],
-                          "id": 549,
+                          "id": 553,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -793,7 +793,7 @@
                           },
                           "typeName": "address"
                         },
-                        "id": 551,
+                        "id": 555,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -809,11 +809,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 552,
+                        "id": 556,
                         "name": "_teamName",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 540,
+                        "referencedDeclaration": 544,
                         "src": "357:9:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -832,7 +832,7 @@
                           "typeString": "string memory"
                         }
                       ],
-                      "id": 548,
+                      "id": 552,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -840,23 +840,23 @@
                       "nodeType": "NewExpression",
                       "src": "333:8:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_string_memory_ptr_$returns$_t_contract$_Team_$526_$",
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_address_$_t_string_memory_ptr_$returns$_t_contract$_Team_$530_$",
                         "typeString": "function (address,string memory) returns (contract Team)"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 547,
+                        "id": 551,
                         "name": "Team",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 526,
+                        "referencedDeclaration": 530,
                         "src": "337:4:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_Team_$526",
+                          "typeIdentifier": "t_contract$_Team_$530",
                           "typeString": "contract Team"
                         }
                       }
                     },
-                    "id": 553,
+                    "id": 557,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -866,7 +866,7 @@
                     "nodeType": "FunctionCall",
                     "src": "333:34:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_Team_$526",
+                      "typeIdentifier": "t_contract$_Team_$530",
                       "typeString": "contract Team"
                     }
                   },
@@ -879,11 +879,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 556,
+                        "id": 560,
                         "name": "newTeamAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 546,
+                        "referencedDeclaration": 550,
                         "src": "394:14:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -892,11 +892,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 557,
+                        "id": 561,
                         "name": "_teamName",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 540,
+                        "referencedDeclaration": 544,
                         "src": "410:9:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -915,18 +915,18 @@
                           "typeString": "string memory"
                         }
                       ],
-                      "id": 555,
+                      "id": 559,
                       "name": "TeamCreated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 538,
+                      "referencedDeclaration": 542,
                       "src": "382:11:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_string_memory_ptr_$returns$__$",
                         "typeString": "function (address,string memory)"
                       }
                     },
-                    "id": 558,
+                    "id": 562,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -940,28 +940,28 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 559,
+                  "id": 563,
                   "nodeType": "EmitStatement",
                   "src": "377:43:6"
                 }
               ]
             },
             "documentation": null,
-            "id": 561,
+            "id": 565,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
             "modifiers": [
               {
                 "arguments": null,
-                "id": 543,
+                "id": 547,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 542,
+                  "id": 546,
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 123,
+                  "referencedDeclaration": 127,
                   "src": "288:9:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -975,15 +975,15 @@
             "name": "createTeam",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 541,
+              "id": 545,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 540,
+                  "id": 544,
                   "name": "_teamName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 561,
+                  "scope": 565,
                   "src": "263:16:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -992,7 +992,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 539,
+                    "id": 543,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "263:6:6",
@@ -1009,19 +1009,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 544,
+              "id": 548,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "298:0:6"
             },
-            "scope": 562,
+            "scope": 566,
             "src": "243:184:6",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 563,
+        "scope": 567,
         "src": "140:289:6"
       }
     ],
@@ -1033,5 +1033,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-07-27T18:47:31.671Z"
+  "updatedAt": "2018-07-27T22:40:32.358Z"
 }

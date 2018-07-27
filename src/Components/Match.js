@@ -1,15 +1,14 @@
 import React from 'react';
 import TeamContainer from '../Containers/TeamContainer.js';
-import '../css/Match.css';
+import '../css/MatchList.css';
 
 const Match = (props) => {
     return (
         <div className="Match">
             <div>
                 <TeamContainer
-                    address = {props.team1Address}
-                    name = {props.team1Name}
-                    web3 = {props.web3}
+                    address={props.team1Address}
+                    name={props.team1Name}
                 />   
             </div>
             <div>
@@ -18,13 +17,12 @@ const Match = (props) => {
             </div>
             <div>
                 <TeamContainer
-                    address = {props.team2Address}
-                    name = {props.team2Name}
-                    web3 = {props.web3}
+                    address={props.team2Address}
+                    name={props.team2Name}
                 />  
             </div>
         </div>
     )
 };
 
-export default Match;
+export default Match

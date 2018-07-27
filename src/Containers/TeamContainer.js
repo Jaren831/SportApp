@@ -1,20 +1,33 @@
 import React, { Component } from 'react';
 import Team from '../Components/Team.js';
-import TeamContract from '../build/contracts/Team.json';
+import TeamContract from '../../build/contracts/Team.json';
+import getWeb3 from '../utils/getWeb3';
 
 class TeamContainer extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      web3: props.web3,
+      web3: null,
       address: props.address,
       name: props.name,
       bet: 0
     }
 
-    this.instantiateContract = this.instantiateContract.bind(this);
-    this.instantiateContract()
+    this.instantiateContract = this.instantiateContract.bind(this)
+    this.placeBet = this.placeBet.bind(this)
+
+    getWeb3
+    .then(results => {
+      console.log('Succesful finding web3.')
+      this.setState({
+        web3: results.web3
+      })
+      this.instantiateContract()
+    })
+    .catch(() => {
+      console.log('Error finding web3.')
+    })    
 }
 
   instantiateContract() {
@@ -43,9 +56,9 @@ class TeamContainer extends Component {
     return (
       <div>
         <Team 
-          name = {this.state.name}
-          bet = {this.state.bet}
-          address = {this.state.address}
+          name={this.state.name}
+          bet={this.state.bet}
+          address={this.state.address}
         />
         <div>Button</div>
       </div>

@@ -11,11 +11,13 @@ import "./SafeMath.sol";
 
 contract Match is TeamFactory {
     string public winner;
+    string team1;
+    string team2;
 
     constructor(string _team1, string _team2, address _owner) public {
         owner = _owner;
-        createTeam(_team1);
-        createTeam(_team2);
+        team1 = _team1;
+        team2 = _team2;
     }
 
     function getMatchResult() public onlyOwner {

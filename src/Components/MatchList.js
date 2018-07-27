@@ -7,10 +7,9 @@ const MatchList = (props) => {
         return (
             <div key={match.address}>
               <MatchContainer
-                  address = {match.address}
-                  team1 = {match.team1}
-                  team2 = {match.team2} 
-                  web3 = {props.web3}/>
+                  address={match.address}
+                  team1={match.team1}
+                  team2={match.team2}/>
             </div>
         )
       });

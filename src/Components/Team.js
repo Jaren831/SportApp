@@ -11,4 +11,4 @@ const Team = (props) => {
     )
 };
 
-export default Team;
+export default Team
