@@ -1,27 +1,43 @@
-//app should now do very little but orchestrate containers
-//app -> matchlistcontainer -> matchList -> matchcontainer -> match -> teamcontainer -> team
-//team container needs button that prompts user to send X eth with metamask
+import React from 'react';
+import MatchList from '../Components/MatchList.js';
 
-import React, { Component } from 'react';
-import getWeb3 from './utils/getWeb3';
+class MatchListContainer extends React.Component {
+  constructor(props) {
+    super(props)
 
-import MatchFactoryContract from '../build/contracts/MatchFactory.json';
-import MatchList from './Components/MatchList.js';
+    this.state = {
+      //this needs to be changed to recieve mactFactoryAddress not instance. app must deliver address only
+      matchFactoryInstance: props.matchFactoryInstance,
+      matches: [],
+      web3: props.web3
+    }
+    this.instantiateList = this.instantiateList.bind(this);
+    this.instantiateList()
+  }
 
-import './css/oswald.css';
-import './css/open-sans.css';
-import './css/pure-min.css';
-import '.css/MatchListContainer.css';
+  instantiateList() {
+    const matchFactoryEvent = this.state.matchFactoryInstance.allEvents({fromBlock: 0, toBlock: 'latest'});
+    matchFactoryEvent.watch((error, result) => {
+    if (!error) {
+        if (result.event === "MatchCreated") {
+            let newArray = this.state.matches.slice();
+            newArray.push({
+                address: result.args.matchAddress, 
+                team1: result.args.team1, 
+                team2: result.args.team2});
+            this.setState({
+                matches: newArray
+            });          
+        }
+    } else {
+        console.log(error)
+    }
+    }) 
+  }
 
-const MatchListContainer = (props) => {
-    return (
-        <div>
-            <MatchList 
-                matchFactoryInstance = {props.matchFactoryInstance} 
-                web3 = {props.web3}
-            />
-        </div>
-    );
+  render() {
+    return React.createElement(MatchList, { matches: this.state.matches }, {web3: this.state.web3});
+  }
 }
 
 export default MatchListContainer
