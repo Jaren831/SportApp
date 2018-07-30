@@ -1,8 +1,7 @@
 pragma solidity ^0.4.24;
 
 import "./PlayerFactory.sol";
-import "./SafeMath.sol";
-// import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 contract Team is PlayerFactory {
     using SafeMath for uint256;

@@ -1,6 +1,6 @@
 import React from 'react';
 import TeamContainer from '../Containers/TeamContainer.js';
-import '../css/MatchList.css';
+import '../css/Match.css';
 
 const Match = (props) => {
     return (
@@ -12,7 +12,7 @@ const Match = (props) => {
                 />   
             </div>
             <div>
-                <div>{props.team1} vs {props.team2}</div>
+                <div>{props.team1Name} vs {props.team2Name}</div>
                 <div>{props.matchAddress}</div>
             </div>
             <div>

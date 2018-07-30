@@ -1,23 +1,17 @@
 pragma solidity ^0.4.24;
 
-import "./Team.sol";
 import "./TeamFactory.sol";
-import "./SafeMath.sol";
-// import "openzeppelin-solidity/contracts/math/SafeMath.sol";
-
-//PROBLEMS
-// loops are bad news
-// teamcontract fallback function too much gas won't work
+import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 contract Match is TeamFactory {
     string public winner;
     string team1;
     string team2;
 
-    constructor(string _team1, string _team2, address _owner) public {
+    constructor(string _team1Name, string _team2Name, address _owner) public {
         owner = _owner;
-        team1 = _team1;
-        team2 = _team2;
+        team1 = _team1Name;
+        team2 = _team2Name;
     }
 
     function getMatchResult() public onlyOwner {

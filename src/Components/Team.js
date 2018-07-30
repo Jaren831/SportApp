@@ -4,9 +4,9 @@ import '../css/Team.css';
 const Team = (props) => {
     return (
         <div className="Team">
-            name = {props.name}
-            bet = {props.bet}
-            address = {props.address}
+            <div>name = {props.name}</div>
+            <div>bet = {props.bet}</div>
+            <div>address = {props.address}</div>
         </div>
     )
 };

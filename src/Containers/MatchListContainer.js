@@ -1,6 +1,8 @@
 import React from 'react';
 import MatchList from '../Components/MatchList.js';
 import MatchFactoryContract from '../../build/contracts/MatchFactory.json';
+import MatchContract from '../../build/contracts/Match.json';
+
 import getWeb3 from '../utils/getWeb3';
 
 class MatchListContainer extends React.Component {
@@ -59,12 +61,23 @@ class MatchListContainer extends React.Component {
 
   onMatchSubmit = (event) => {
     event.preventDefault()
+    const contract = require('truffle-contract')
+    const match = contract(MatchContract)
+    match.setProvider(this.state.web3.currentProvider)
     this.state.web3.eth.getAccounts((error, accounts) => {
-      return this.state.matchFactoryInstance.createMatch(
+      this.state.matchFactoryInstance.createMatch(
         this.refs.team1.value, 
         this.refs.team2.value, 
-        {from: accounts[0], gasPrice: 20000000000}
-      )
+        {from: accounts[0], gasPrice: 20000000000
+      }).then((result) => {
+        match.at(result.logs[0].args.matchAddress).then((instance) => {
+          return instance.createTeam(
+            this.refs.team1.value, 
+            this.refs.team2.value, 
+            {from: accounts[0], gasPrice: 20000000000}
+          )
+        })
+      })
     })
   }
 

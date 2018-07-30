@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import MatchListContainer from './Containers/MatchListContainer';
+import NavBar from './Components/NavBar'
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 class App extends Component {
   // constructor(props) {
@@ -12,9 +14,11 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
+        <CssBaseline />
+        <NavBar/>
         <MatchListContainer/>
-      </div>
+      </React.Fragment>
     );
   }
 }

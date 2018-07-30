@@ -14,9 +14,6 @@ class TeamContainer extends Component {
       bet: 0
     }
 
-    this.instantiateContract = this.instantiateContract.bind(this)
-    this.placeBet = this.placeBet.bind(this)
-
     getWeb3
     .then(results => {
       console.log('Succesful finding web3.')
@@ -28,18 +25,23 @@ class TeamContainer extends Component {
     .catch(() => {
       console.log('Error finding web3.')
     })    
+
+    this.instantiateContract = this.instantiateContract.bind(this)
+    this.placeBet = this.placeBet.bind(this)
 }
 
   instantiateContract() {
     const contract = require('truffle-contract')
     const team = contract(TeamContract)
     team.setProvider(this.state.web3.currentProvider)
+    console.log(this.state.address)
     team.at(this.state.address).then((instance) => {
-        const playerAddedEvent = instance.PlayerAdded();
+        const playerAddedEvent = instance.allEvents({fromBlock: 0, toBlock: 'latest'});
         playerAddedEvent.watch((error, result) => {
             if (!error) {
+              console.log(result)
                 this.setState({
-                    teamBet: result.args.contractBalance
+                    bet: this.state.web3.utils.fromWei(result.args.contractBalance.toString(), 'ether')
                 });          
             } else {
                 console.log(error)
@@ -48,8 +50,17 @@ class TeamContainer extends Component {
     })
   }
 
-  placeBet() {
-
+  placeBet = (event) => {
+    event.preventDefault()
+    const contract = require('truffle-contract')
+    const team = contract(TeamContract)
+    team.setProvider(this.state.web3.currentProvider)
+    this.state.web3.eth.getAccounts((error, accounts) => {
+      team.at(this.state.address).placeBet(
+        this.state.web3.utils.toWei((this.refs.placeBet.value).toString(), 'ether'), 
+        {from: accounts[0], gasPrice: 20000000000
+      })
+    })
   }
 
   render() {
@@ -60,7 +71,13 @@ class TeamContainer extends Component {
           bet={this.state.bet}
           address={this.state.address}
         />
-        <div>Button</div>
+        <form>
+          <label>
+            Place Bet:
+            <input type="number" ref="placeBet" />
+          </label>
+          <input type="submit" onClick={ this.placeBet } value="Submit" />
+        </form>
       </div>
 
     );

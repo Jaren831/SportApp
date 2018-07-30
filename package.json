@@ -49,13 +49,18 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "@material-ui/core": "^1.4.2",
+    "@material-ui/icons": "^2.0.0",
     "dotenv": "^2.0.0",
     "drizzle": "^1.2.2",
     "drizzle-react": "^1.1.1",
     "drizzle-react-components": "^1.1.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "web3": "^1.0.0-beta.34"
+    "material-ui": "^1.0.0-beta.47",
+    "openzeppelin-solidity": "1.11.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "typeface-roboto": "0.0.54",
+    "web3": "^1.0.0-beta.35"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -101,5 +106,21 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  }
+  },
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jaren831/SportApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jaren831/SportApp/issues"
+  },
+  "homepage": "https://github.com/Jaren831/SportApp#readme",
+  "description": ""
 }
