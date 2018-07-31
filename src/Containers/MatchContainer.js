@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Match from '../Components/Match.js';
 import MatchContract from '../../build/contracts/Match.json';
-import getWeb3 from '../utils/getWeb3';
+import getWeb3 from '../utils/getWeb3.js';
 
 class MatchContainer extends Component {
     constructor(props) {
@@ -31,7 +31,8 @@ class MatchContainer extends Component {
         })
         .catch(() => {
             console.log('Error finding web3.')
-        })    }
+        })    
+    }
 
     instantiateContract() {
         const contract = require('truffle-contract')

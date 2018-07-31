@@ -4428,7 +4428,7 @@ function fromByteArray (uint8) {
 
 'use strict'
 
-var base64 = require('base64-js')
+var base64 = require('../../../../Library/Caches/typescript/2.9/node_modules/@types/base64-js')
 var ieee754 = require('ieee754')
 
 exports.Buffer = Buffer
@@ -6264,7 +6264,7 @@ module.exports = {
 (function (Buffer){
 'use strict';
 
-var BN = require('bn.js');
+var BN = require('../../../../Library/Caches/typescript/2.9/node_modules/@types/bn.js');
 var numberToBN = require('number-to-bn');
 var keccak256 = require('js-sha3').keccak_256;
 
@@ -7257,7 +7257,7 @@ module.exports = function isHexPrefixed(str) {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"_process":13}],12:[function(require,module,exports){
-var BN = require('bn.js');
+var BN = require('../../../../Library/Caches/typescript/2.9/node_modules/@types/bn.js');
 var stripHexPrefix = require('strip-hex-prefix');
 
 /**
@@ -7558,7 +7558,7 @@ var Blockchain = {
 module.exports = Blockchain;
 
 },{"web3":5}],16:[function(require,module,exports){
-var sha3 = require("crypto-js/sha3");
+var sha3 = require("../../../../Library/Caches/typescript/2.9/node_modules/@types/crypto-js/sha3");
 var schema_version = require("./package.json").version;
 
 var TruffleSchema = {

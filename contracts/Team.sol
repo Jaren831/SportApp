@@ -16,6 +16,10 @@ contract Team is PlayerFactory {
         teamName = _teamName;
     }
 
+    function () public payable {
+        placeBet();
+    }
+
     //Eth recieved is new player, call createPlayer
     function placeBet() public payable {
         addPlayer(msg.sender, msg.value);

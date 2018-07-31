@@ -3,6 +3,11 @@ pragma solidity ^0.4.24;
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 contract PlayerFactory is Ownable {
+    Player[] public players;
+    struct Player {
+        address playerAddress;
+        uint playerBet;
+    }
     event PlayerAdded(address playerAddress, address teamAddress, uint playerBet, uint contractBalance);
 
     function addPlayer(address _playerAddress, uint _playerBet) internal {

@@ -151,7 +151,7 @@
         "id": 92,
         "nodeType": "ImportDirective",
         "scope": 147,
-        "sourceUnit": 581,
+        "sourceUnit": 588,
         "src": "26:63:2",
         "symbolAliases": [],
         "unitAlias": ""
@@ -165,10 +165,10 @@
               "id": 93,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 580,
+              "referencedDeclaration": 587,
               "src": "117:7:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$580",
+                "typeIdentifier": "t_contract$_Ownable_$587",
                 "typeString": "contract Ownable"
               }
             },
@@ -178,7 +178,7 @@
           }
         ],
         "contractDependencies": [
-          580
+          587
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -186,7 +186,7 @@
         "id": 146,
         "linearizedBaseContracts": [
           146,
-          580
+          587
         ],
         "name": "PlayerFactory",
         "nodeType": "ContractDefinition",
@@ -621,7 +621,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 610,
+                            "referencedDeclaration": 617,
                             "src": "570:4:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_PlayerFactory_$146",
@@ -687,7 +687,7 @@
                               "name": "this",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 610,
+                              "referencedDeclaration": 617,
                               "src": "597:4:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_contract$_PlayerFactory_$146",
@@ -908,7 +908,7 @@
         "id": 92,
         "nodeType": "ImportDirective",
         "scope": 147,
-        "sourceUnit": 581,
+        "sourceUnit": 588,
         "src": "26:63:2",
         "symbolAliases": [],
         "unitAlias": ""
@@ -922,10 +922,10 @@
               "id": 93,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 580,
+              "referencedDeclaration": 587,
               "src": "117:7:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$580",
+                "typeIdentifier": "t_contract$_Ownable_$587",
                 "typeString": "contract Ownable"
               }
             },
@@ -935,7 +935,7 @@
           }
         ],
         "contractDependencies": [
-          580
+          587
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -943,7 +943,7 @@
         "id": 146,
         "linearizedBaseContracts": [
           146,
-          580
+          587
         ],
         "name": "PlayerFactory",
         "nodeType": "ContractDefinition",
@@ -1378,7 +1378,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 610,
+                            "referencedDeclaration": 617,
                             "src": "570:4:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_PlayerFactory_$146",
@@ -1444,7 +1444,7 @@
                               "name": "this",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 610,
+                              "referencedDeclaration": 617,
                               "src": "597:4:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_contract$_PlayerFactory_$146",
@@ -1644,5 +1644,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-07-30T16:17:41.473Z"
+  "updatedAt": "2018-07-31T16:00:13.292Z"
 }

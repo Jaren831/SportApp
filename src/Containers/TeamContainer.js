@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Team from '../Components/Team.js';
 import TeamContract from '../../build/contracts/Team.json';
-import getWeb3 from '../utils/getWeb3';
+import getWeb3 from '../utils/getWeb3.js';
 
 class TeamContainer extends Component {
   constructor(props) {
@@ -34,19 +34,17 @@ class TeamContainer extends Component {
     const contract = require('truffle-contract')
     const team = contract(TeamContract)
     team.setProvider(this.state.web3.currentProvider)
-    console.log(this.state.address)
     team.at(this.state.address).then((instance) => {
-        const playerAddedEvent = instance.allEvents({fromBlock: 0, toBlock: 'latest'});
-        playerAddedEvent.watch((error, result) => {
-            if (!error) {
-              console.log(result)
-                this.setState({
-                    bet: this.state.web3.utils.fromWei(result.args.contractBalance.toString(), 'ether')
-                });          
-            } else {
-                console.log(error)
-            }
-        })     
+      const playerAddedEvent = instance.allEvents({fromBlock: 0, toBlock: 'latest'});
+      playerAddedEvent.watch((error, result) => {
+          if (!error) {
+            this.setState({
+              bet: this.state.web3.utils.fromWei(result.args.contractBalance.toString(), 'ether')
+            });          
+          } else {
+            console.log(error)
+          }
+      })     
     })
   }
 
@@ -56,9 +54,12 @@ class TeamContainer extends Component {
     const team = contract(TeamContract)
     team.setProvider(this.state.web3.currentProvider)
     this.state.web3.eth.getAccounts((error, accounts) => {
-      team.at(this.state.address).placeBet(
-        this.state.web3.utils.toWei((this.refs.placeBet.value).toString(), 'ether'), 
-        {from: accounts[0], gasPrice: 20000000000
+      team.at(this.state.address).placeBet({
+        from: accounts[0], 
+        gasPrice: 20000000000, 
+        value: this.state.web3.utils.toWei(
+          (this.refs.placeBet.value).toString(), 'ether'
+        )
       })
     })
   }

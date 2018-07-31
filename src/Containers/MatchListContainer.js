@@ -3,7 +3,7 @@ import MatchList from '../Components/MatchList.js';
 import MatchFactoryContract from '../../build/contracts/MatchFactory.json';
 import MatchContract from '../../build/contracts/Match.json';
 
-import getWeb3 from '../utils/getWeb3';
+import getWeb3 from '../utils/getWeb3.js';
 
 class MatchListContainer extends React.Component {
   constructor(props) {
