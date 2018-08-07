@@ -3,8 +3,6 @@ pragma solidity ^0.4.24;
 import "./Match.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
-//need to check ownership chain 
-
 contract MatchFactory is Ownable {
     event MatchCreated(address matchAddress, string team1, string team2);
 

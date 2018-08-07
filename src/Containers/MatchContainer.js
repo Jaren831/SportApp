@@ -15,9 +15,11 @@ class MatchContainer extends Component {
             team1Name: null,
             team2Address: null,
             team2Name: null,
+            active: true
         }
 
         this.instantiateContract = this.instantiateContract.bind(this);
+        this.onWinnerSubmit = this.onWinnerSubmit.bind(this);
     
     }
 
@@ -61,6 +63,26 @@ class MatchContainer extends Component {
         })
     }
 
+    onWinnerSubmit = (event) => {
+        //get winner address. check against addreses, send to winner
+        event.preventDefault()
+        this.state.web3.eth.getAccounts((error, accounts) => {
+          this.state.matchInstance.sendMatchResult(
+            this.refs.winner.value, 
+            {from: accounts[0], gasPrice: 20000000000
+          }).then(() => {
+            return this.state.matchInstance.payOutHouse(
+                {from: accounts[0], gasPrice: 20000000000}
+            )
+          }).then(() => {
+            return this.state.matchInstance.payOutPlayers(
+                {from: accounts[0], gasPrice: 20000000000}
+            )
+          })
+        })
+
+    }
+
     render() {
         if (!this.state.team1Address && this.state.team2Address === null) {
             return null;
@@ -74,6 +96,13 @@ class MatchContainer extends Component {
                     team2Name={this.state.team2Name}
                     matchAddress={this.state.matchAddress}
                 />
+                <form>
+                    <label>
+                        Winner:
+                        <input type="text" ref="winner" />
+                    </label>
+                    <input type="submit" onClick={ this.onWinnerSubmit } value="Submit" />
+                </form>
             </div>
         );
     }

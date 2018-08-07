@@ -26,7 +26,7 @@ contract Team is PlayerFactory {
         teamBets.add(msg.value);
     }
 
-    function payoutTeam(address _winnerAddress) external onlyOwner {
+    function payoutTeam(address _winnerAddress) public {
         //sends contract balance to winning address, if winner, do nothing
         if (_winnerAddress != address(this)) {
             _winnerAddress.transfer(address(this).balance);
@@ -34,13 +34,13 @@ contract Team is PlayerFactory {
         emit TeamPaid(address(this), _winnerAddress, address(this).balance);
     } 
 
-    function payoutHouse(address _houseAddress) external onlyOwner {
+    function payoutHouse(address _houseAddress) public {
         //sends house 10% cut
         _houseAddress.transfer((address(this).balance.div(10))); 
         emit HousePaid(address(this), owner, address(this).balance.div(10));
     }
 
-    function payoutPlayers() external onlyOwner {
+    function payoutPlayers() public {
         //sends player their winnings based on ratio. theirBet / pool * total
         uint playerCut = (players[i].playerBet.div(
             teamBets).mul(

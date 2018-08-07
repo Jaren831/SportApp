@@ -128,14 +128,14 @@
     "absolutePath": "/Users/jarenlynch/Ethereum/SportApp/contracts/PlayerFactory.sol",
     "exportedSymbols": {
       "PlayerFactory": [
-        146
+        193
       ]
     },
-    "id": 147,
+    "id": 194,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 91,
+        "id": 138,
         "literals": [
           "solidity",
           "^",
@@ -148,10 +148,10 @@
       {
         "absolutePath": "openzeppelin-solidity/contracts/ownership/Ownable.sol",
         "file": "openzeppelin-solidity/contracts/ownership/Ownable.sol",
-        "id": 92,
+        "id": 139,
         "nodeType": "ImportDirective",
-        "scope": 147,
-        "sourceUnit": 588,
+        "scope": 194,
+        "sourceUnit": 660,
         "src": "26:63:2",
         "symbolAliases": [],
         "unitAlias": ""
@@ -162,67 +162,67 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 93,
+              "id": 140,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 587,
+              "referencedDeclaration": 659,
               "src": "117:7:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$587",
+                "typeIdentifier": "t_contract$_Ownable_$659",
                 "typeString": "contract Ownable"
               }
             },
-            "id": 94,
+            "id": 141,
             "nodeType": "InheritanceSpecifier",
             "src": "117:7:2"
           }
         ],
         "contractDependencies": [
-          587
+          659
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 146,
+        "id": 193,
         "linearizedBaseContracts": [
-          146,
-          587
+          193,
+          659
         ],
         "name": "PlayerFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 97,
+            "id": 144,
             "name": "players",
             "nodeType": "VariableDeclaration",
-            "scope": 146,
+            "scope": 193,
             "src": "131:23:2",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_array$_t_struct$_Player_$102_storage_$dyn_storage",
+              "typeIdentifier": "t_array$_t_struct$_Player_$149_storage_$dyn_storage",
               "typeString": "struct PlayerFactory.Player[]"
             },
             "typeName": {
               "baseType": {
                 "contractScope": null,
-                "id": 95,
+                "id": 142,
                 "name": "Player",
                 "nodeType": "UserDefinedTypeName",
-                "referencedDeclaration": 102,
+                "referencedDeclaration": 149,
                 "src": "131:6:2",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Player_$102_storage_ptr",
+                  "typeIdentifier": "t_struct$_Player_$149_storage_ptr",
                   "typeString": "struct PlayerFactory.Player"
                 }
               },
-              "id": 96,
+              "id": 143,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "131:8:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_array$_t_struct$_Player_$102_storage_$dyn_storage_ptr",
+                "typeIdentifier": "t_array$_t_struct$_Player_$149_storage_$dyn_storage_ptr",
                 "typeString": "struct PlayerFactory.Player[]"
               }
             },
@@ -231,14 +231,14 @@
           },
           {
             "canonicalName": "PlayerFactory.Player",
-            "id": 102,
+            "id": 149,
             "members": [
               {
                 "constant": false,
-                "id": 99,
+                "id": 146,
                 "name": "playerAddress",
                 "nodeType": "VariableDeclaration",
-                "scope": 102,
+                "scope": 149,
                 "src": "184:21:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -247,7 +247,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 98,
+                  "id": 145,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "184:7:2",
@@ -261,10 +261,10 @@
               },
               {
                 "constant": false,
-                "id": 101,
+                "id": 148,
                 "name": "playerBet",
                 "nodeType": "VariableDeclaration",
-                "scope": 102,
+                "scope": 149,
                 "src": "215:14:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -273,7 +273,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 100,
+                  "id": 147,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "215:4:2",
@@ -288,27 +288,27 @@
             ],
             "name": "Player",
             "nodeType": "StructDefinition",
-            "scope": 146,
+            "scope": 193,
             "src": "160:76:2",
             "visibility": "public"
           },
           {
             "anonymous": false,
             "documentation": null,
-            "id": 112,
+            "id": 159,
             "name": "PlayerAdded",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 111,
+              "id": 158,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 104,
+                  "id": 151,
                   "indexed": false,
                   "name": "playerAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 112,
+                  "scope": 159,
                   "src": "259:21:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -317,7 +317,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 103,
+                    "id": 150,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "259:7:2",
@@ -331,11 +331,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 106,
+                  "id": 153,
                   "indexed": false,
                   "name": "teamAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 112,
+                  "scope": 159,
                   "src": "282:19:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -344,7 +344,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 105,
+                    "id": 152,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "282:7:2",
@@ -358,11 +358,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 108,
+                  "id": 155,
                   "indexed": false,
                   "name": "playerBet",
                   "nodeType": "VariableDeclaration",
-                  "scope": 112,
+                  "scope": 159,
                   "src": "303:14:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -371,7 +371,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 107,
+                    "id": 154,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "303:4:2",
@@ -385,11 +385,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 110,
+                  "id": 157,
                   "indexed": false,
                   "name": "contractBalance",
                   "nodeType": "VariableDeclaration",
-                  "scope": 112,
+                  "scope": 159,
                   "src": "319:20:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -398,7 +398,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 109,
+                    "id": 156,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "319:4:2",
@@ -417,37 +417,37 @@
           },
           {
             "body": {
-              "id": 144,
+              "id": 191,
               "nodeType": "Block",
               "src": "416:202:2",
               "statements": [
                 {
                   "assignments": [
-                    120
+                    167
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 120,
+                      "id": 167,
                       "name": "newPlayer",
                       "nodeType": "VariableDeclaration",
-                      "scope": 145,
+                      "scope": 192,
                       "src": "426:23:2",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Player_$102_memory_ptr",
+                        "typeIdentifier": "t_struct$_Player_$149_memory_ptr",
                         "typeString": "struct PlayerFactory.Player"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 119,
+                        "id": 166,
                         "name": "Player",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 102,
+                        "referencedDeclaration": 149,
                         "src": "426:6:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Player_$102_storage_ptr",
+                          "typeIdentifier": "t_struct$_Player_$149_storage_ptr",
                           "typeString": "struct PlayerFactory.Player"
                         }
                       },
@@ -455,17 +455,17 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 125,
+                  "id": 172,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 122,
+                        "id": 169,
                         "name": "_playerAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 114,
+                        "referencedDeclaration": 161,
                         "src": "459:14:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -474,11 +474,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 123,
+                        "id": 170,
                         "name": "_playerBet",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 116,
+                        "referencedDeclaration": 163,
                         "src": "475:10:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -497,18 +497,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 121,
+                      "id": 168,
                       "name": "Player",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 102,
+                      "referencedDeclaration": 149,
                       "src": "452:6:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_struct$_Player_$102_storage_ptr_$",
+                        "typeIdentifier": "t_type$_t_struct$_Player_$149_storage_ptr_$",
                         "typeString": "type(struct PlayerFactory.Player storage pointer)"
                       }
                     },
-                    "id": 124,
+                    "id": 171,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -518,7 +518,7 @@
                     "nodeType": "FunctionCall",
                     "src": "452:34:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Player_$102_memory",
+                      "typeIdentifier": "t_struct$_Player_$149_memory",
                       "typeString": "struct PlayerFactory.Player memory"
                     }
                   },
@@ -531,14 +531,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 129,
+                        "id": 176,
                         "name": "newPlayer",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 120,
+                        "referencedDeclaration": 167,
                         "src": "509:9:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Player_$102_memory_ptr",
+                          "typeIdentifier": "t_struct$_Player_$149_memory_ptr",
                           "typeString": "struct PlayerFactory.Player memory"
                         }
                       }
@@ -546,24 +546,24 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_struct$_Player_$102_memory_ptr",
+                          "typeIdentifier": "t_struct$_Player_$149_memory_ptr",
                           "typeString": "struct PlayerFactory.Player memory"
                         }
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 126,
+                        "id": 173,
                         "name": "players",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 97,
+                        "referencedDeclaration": 144,
                         "src": "496:7:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_Player_$102_storage_$dyn_storage",
+                          "typeIdentifier": "t_array$_t_struct$_Player_$149_storage_$dyn_storage",
                           "typeString": "struct PlayerFactory.Player storage ref[] storage ref"
                         }
                       },
-                      "id": 128,
+                      "id": 175,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -573,11 +573,11 @@
                       "referencedDeclaration": null,
                       "src": "496:12:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_Player_$102_storage_$returns$_t_uint256_$",
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_Player_$149_storage_$returns$_t_uint256_$",
                         "typeString": "function (struct PlayerFactory.Player storage ref) returns (uint256)"
                       }
                     },
-                    "id": 130,
+                    "id": 177,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -591,7 +591,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 131,
+                  "id": 178,
                   "nodeType": "ExpressionStatement",
                   "src": "496:23:2"
                 },
@@ -601,11 +601,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 133,
+                        "id": 180,
                         "name": "_playerAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 114,
+                        "referencedDeclaration": 161,
                         "src": "546:14:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -617,14 +617,14 @@
                         "arguments": [
                           {
                             "argumentTypes": null,
-                            "id": 135,
+                            "id": 182,
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 617,
+                            "referencedDeclaration": 689,
                             "src": "570:4:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_PlayerFactory_$146",
+                              "typeIdentifier": "t_contract$_PlayerFactory_$193",
                               "typeString": "contract PlayerFactory"
                             }
                           }
@@ -632,11 +632,11 @@
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_PlayerFactory_$146",
+                              "typeIdentifier": "t_contract$_PlayerFactory_$193",
                               "typeString": "contract PlayerFactory"
                             }
                           ],
-                          "id": 134,
+                          "id": 181,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -649,7 +649,7 @@
                           },
                           "typeName": "address"
                         },
-                        "id": 136,
+                        "id": 183,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -665,11 +665,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 137,
+                        "id": 184,
                         "name": "_playerBet",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 116,
+                        "referencedDeclaration": 163,
                         "src": "577:10:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -683,14 +683,14 @@
                           "arguments": [
                             {
                               "argumentTypes": null,
-                              "id": 139,
+                              "id": 186,
                               "name": "this",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 617,
+                              "referencedDeclaration": 689,
                               "src": "597:4:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_PlayerFactory_$146",
+                                "typeIdentifier": "t_contract$_PlayerFactory_$193",
                                 "typeString": "contract PlayerFactory"
                               }
                             }
@@ -698,11 +698,11 @@
                           "expression": {
                             "argumentTypes": [
                               {
-                                "typeIdentifier": "t_contract$_PlayerFactory_$146",
+                                "typeIdentifier": "t_contract$_PlayerFactory_$193",
                                 "typeString": "contract PlayerFactory"
                               }
                             ],
-                            "id": 138,
+                            "id": 185,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -715,7 +715,7 @@
                             },
                             "typeName": "address"
                           },
-                          "id": 140,
+                          "id": 187,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -729,7 +729,7 @@
                             "typeString": "address"
                           }
                         },
-                        "id": 141,
+                        "id": 188,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -763,18 +763,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 132,
+                      "id": 179,
                       "name": "PlayerAdded",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 112,
+                      "referencedDeclaration": 159,
                       "src": "534:11:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$_t_uint256_$returns$__$",
                         "typeString": "function (address,address,uint256,uint256)"
                       }
                     },
-                    "id": 142,
+                    "id": 189,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -788,14 +788,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 143,
+                  "id": 190,
                   "nodeType": "EmitStatement",
                   "src": "529:82:2"
                 }
               ]
             },
             "documentation": null,
-            "id": 145,
+            "id": 192,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -803,15 +803,15 @@
             "name": "addPlayer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 117,
+              "id": 164,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 114,
+                  "id": 161,
                   "name": "_playerAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 145,
+                  "scope": 192,
                   "src": "366:22:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -820,7 +820,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 113,
+                    "id": 160,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "366:7:2",
@@ -834,10 +834,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 116,
+                  "id": 163,
                   "name": "_playerBet",
                   "nodeType": "VariableDeclaration",
-                  "scope": 145,
+                  "scope": 192,
                   "src": "390:15:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -846,7 +846,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 115,
+                    "id": 162,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "390:4:2",
@@ -863,19 +863,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 118,
+              "id": 165,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "416:0:2"
             },
-            "scope": 146,
+            "scope": 193,
             "src": "347:271:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "internal"
           }
         ],
-        "scope": 147,
+        "scope": 194,
         "src": "91:529:2"
       }
     ],
@@ -885,14 +885,14 @@
     "absolutePath": "/Users/jarenlynch/Ethereum/SportApp/contracts/PlayerFactory.sol",
     "exportedSymbols": {
       "PlayerFactory": [
-        146
+        193
       ]
     },
-    "id": 147,
+    "id": 194,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 91,
+        "id": 138,
         "literals": [
           "solidity",
           "^",
@@ -905,10 +905,10 @@
       {
         "absolutePath": "openzeppelin-solidity/contracts/ownership/Ownable.sol",
         "file": "openzeppelin-solidity/contracts/ownership/Ownable.sol",
-        "id": 92,
+        "id": 139,
         "nodeType": "ImportDirective",
-        "scope": 147,
-        "sourceUnit": 588,
+        "scope": 194,
+        "sourceUnit": 660,
         "src": "26:63:2",
         "symbolAliases": [],
         "unitAlias": ""
@@ -919,67 +919,67 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 93,
+              "id": 140,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 587,
+              "referencedDeclaration": 659,
               "src": "117:7:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$587",
+                "typeIdentifier": "t_contract$_Ownable_$659",
                 "typeString": "contract Ownable"
               }
             },
-            "id": 94,
+            "id": 141,
             "nodeType": "InheritanceSpecifier",
             "src": "117:7:2"
           }
         ],
         "contractDependencies": [
-          587
+          659
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 146,
+        "id": 193,
         "linearizedBaseContracts": [
-          146,
-          587
+          193,
+          659
         ],
         "name": "PlayerFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 97,
+            "id": 144,
             "name": "players",
             "nodeType": "VariableDeclaration",
-            "scope": 146,
+            "scope": 193,
             "src": "131:23:2",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_array$_t_struct$_Player_$102_storage_$dyn_storage",
+              "typeIdentifier": "t_array$_t_struct$_Player_$149_storage_$dyn_storage",
               "typeString": "struct PlayerFactory.Player[]"
             },
             "typeName": {
               "baseType": {
                 "contractScope": null,
-                "id": 95,
+                "id": 142,
                 "name": "Player",
                 "nodeType": "UserDefinedTypeName",
-                "referencedDeclaration": 102,
+                "referencedDeclaration": 149,
                 "src": "131:6:2",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Player_$102_storage_ptr",
+                  "typeIdentifier": "t_struct$_Player_$149_storage_ptr",
                   "typeString": "struct PlayerFactory.Player"
                 }
               },
-              "id": 96,
+              "id": 143,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "131:8:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_array$_t_struct$_Player_$102_storage_$dyn_storage_ptr",
+                "typeIdentifier": "t_array$_t_struct$_Player_$149_storage_$dyn_storage_ptr",
                 "typeString": "struct PlayerFactory.Player[]"
               }
             },
@@ -988,14 +988,14 @@
           },
           {
             "canonicalName": "PlayerFactory.Player",
-            "id": 102,
+            "id": 149,
             "members": [
               {
                 "constant": false,
-                "id": 99,
+                "id": 146,
                 "name": "playerAddress",
                 "nodeType": "VariableDeclaration",
-                "scope": 102,
+                "scope": 149,
                 "src": "184:21:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -1004,7 +1004,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 98,
+                  "id": 145,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "184:7:2",
@@ -1018,10 +1018,10 @@
               },
               {
                 "constant": false,
-                "id": 101,
+                "id": 148,
                 "name": "playerBet",
                 "nodeType": "VariableDeclaration",
-                "scope": 102,
+                "scope": 149,
                 "src": "215:14:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -1030,7 +1030,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 100,
+                  "id": 147,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "215:4:2",
@@ -1045,27 +1045,27 @@
             ],
             "name": "Player",
             "nodeType": "StructDefinition",
-            "scope": 146,
+            "scope": 193,
             "src": "160:76:2",
             "visibility": "public"
           },
           {
             "anonymous": false,
             "documentation": null,
-            "id": 112,
+            "id": 159,
             "name": "PlayerAdded",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 111,
+              "id": 158,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 104,
+                  "id": 151,
                   "indexed": false,
                   "name": "playerAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 112,
+                  "scope": 159,
                   "src": "259:21:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1074,7 +1074,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 103,
+                    "id": 150,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "259:7:2",
@@ -1088,11 +1088,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 106,
+                  "id": 153,
                   "indexed": false,
                   "name": "teamAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 112,
+                  "scope": 159,
                   "src": "282:19:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1101,7 +1101,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 105,
+                    "id": 152,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "282:7:2",
@@ -1115,11 +1115,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 108,
+                  "id": 155,
                   "indexed": false,
                   "name": "playerBet",
                   "nodeType": "VariableDeclaration",
-                  "scope": 112,
+                  "scope": 159,
                   "src": "303:14:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1128,7 +1128,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 107,
+                    "id": 154,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "303:4:2",
@@ -1142,11 +1142,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 110,
+                  "id": 157,
                   "indexed": false,
                   "name": "contractBalance",
                   "nodeType": "VariableDeclaration",
-                  "scope": 112,
+                  "scope": 159,
                   "src": "319:20:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1155,7 +1155,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 109,
+                    "id": 156,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "319:4:2",
@@ -1174,37 +1174,37 @@
           },
           {
             "body": {
-              "id": 144,
+              "id": 191,
               "nodeType": "Block",
               "src": "416:202:2",
               "statements": [
                 {
                   "assignments": [
-                    120
+                    167
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 120,
+                      "id": 167,
                       "name": "newPlayer",
                       "nodeType": "VariableDeclaration",
-                      "scope": 145,
+                      "scope": 192,
                       "src": "426:23:2",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Player_$102_memory_ptr",
+                        "typeIdentifier": "t_struct$_Player_$149_memory_ptr",
                         "typeString": "struct PlayerFactory.Player"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 119,
+                        "id": 166,
                         "name": "Player",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 102,
+                        "referencedDeclaration": 149,
                         "src": "426:6:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Player_$102_storage_ptr",
+                          "typeIdentifier": "t_struct$_Player_$149_storage_ptr",
                           "typeString": "struct PlayerFactory.Player"
                         }
                       },
@@ -1212,17 +1212,17 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 125,
+                  "id": 172,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 122,
+                        "id": 169,
                         "name": "_playerAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 114,
+                        "referencedDeclaration": 161,
                         "src": "459:14:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -1231,11 +1231,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 123,
+                        "id": 170,
                         "name": "_playerBet",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 116,
+                        "referencedDeclaration": 163,
                         "src": "475:10:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -1254,18 +1254,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 121,
+                      "id": 168,
                       "name": "Player",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 102,
+                      "referencedDeclaration": 149,
                       "src": "452:6:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_struct$_Player_$102_storage_ptr_$",
+                        "typeIdentifier": "t_type$_t_struct$_Player_$149_storage_ptr_$",
                         "typeString": "type(struct PlayerFactory.Player storage pointer)"
                       }
                     },
-                    "id": 124,
+                    "id": 171,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1275,7 +1275,7 @@
                     "nodeType": "FunctionCall",
                     "src": "452:34:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Player_$102_memory",
+                      "typeIdentifier": "t_struct$_Player_$149_memory",
                       "typeString": "struct PlayerFactory.Player memory"
                     }
                   },
@@ -1288,14 +1288,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 129,
+                        "id": 176,
                         "name": "newPlayer",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 120,
+                        "referencedDeclaration": 167,
                         "src": "509:9:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Player_$102_memory_ptr",
+                          "typeIdentifier": "t_struct$_Player_$149_memory_ptr",
                           "typeString": "struct PlayerFactory.Player memory"
                         }
                       }
@@ -1303,24 +1303,24 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_struct$_Player_$102_memory_ptr",
+                          "typeIdentifier": "t_struct$_Player_$149_memory_ptr",
                           "typeString": "struct PlayerFactory.Player memory"
                         }
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 126,
+                        "id": 173,
                         "name": "players",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 97,
+                        "referencedDeclaration": 144,
                         "src": "496:7:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_Player_$102_storage_$dyn_storage",
+                          "typeIdentifier": "t_array$_t_struct$_Player_$149_storage_$dyn_storage",
                           "typeString": "struct PlayerFactory.Player storage ref[] storage ref"
                         }
                       },
-                      "id": 128,
+                      "id": 175,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1330,11 +1330,11 @@
                       "referencedDeclaration": null,
                       "src": "496:12:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_Player_$102_storage_$returns$_t_uint256_$",
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_Player_$149_storage_$returns$_t_uint256_$",
                         "typeString": "function (struct PlayerFactory.Player storage ref) returns (uint256)"
                       }
                     },
-                    "id": 130,
+                    "id": 177,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1348,7 +1348,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 131,
+                  "id": 178,
                   "nodeType": "ExpressionStatement",
                   "src": "496:23:2"
                 },
@@ -1358,11 +1358,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 133,
+                        "id": 180,
                         "name": "_playerAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 114,
+                        "referencedDeclaration": 161,
                         "src": "546:14:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -1374,14 +1374,14 @@
                         "arguments": [
                           {
                             "argumentTypes": null,
-                            "id": 135,
+                            "id": 182,
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 617,
+                            "referencedDeclaration": 689,
                             "src": "570:4:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_PlayerFactory_$146",
+                              "typeIdentifier": "t_contract$_PlayerFactory_$193",
                               "typeString": "contract PlayerFactory"
                             }
                           }
@@ -1389,11 +1389,11 @@
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_PlayerFactory_$146",
+                              "typeIdentifier": "t_contract$_PlayerFactory_$193",
                               "typeString": "contract PlayerFactory"
                             }
                           ],
-                          "id": 134,
+                          "id": 181,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -1406,7 +1406,7 @@
                           },
                           "typeName": "address"
                         },
-                        "id": 136,
+                        "id": 183,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1422,11 +1422,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 137,
+                        "id": 184,
                         "name": "_playerBet",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 116,
+                        "referencedDeclaration": 163,
                         "src": "577:10:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -1440,14 +1440,14 @@
                           "arguments": [
                             {
                               "argumentTypes": null,
-                              "id": 139,
+                              "id": 186,
                               "name": "this",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 617,
+                              "referencedDeclaration": 689,
                               "src": "597:4:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_PlayerFactory_$146",
+                                "typeIdentifier": "t_contract$_PlayerFactory_$193",
                                 "typeString": "contract PlayerFactory"
                               }
                             }
@@ -1455,11 +1455,11 @@
                           "expression": {
                             "argumentTypes": [
                               {
-                                "typeIdentifier": "t_contract$_PlayerFactory_$146",
+                                "typeIdentifier": "t_contract$_PlayerFactory_$193",
                                 "typeString": "contract PlayerFactory"
                               }
                             ],
-                            "id": 138,
+                            "id": 185,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -1472,7 +1472,7 @@
                             },
                             "typeName": "address"
                           },
-                          "id": 140,
+                          "id": 187,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -1486,7 +1486,7 @@
                             "typeString": "address"
                           }
                         },
-                        "id": 141,
+                        "id": 188,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1520,18 +1520,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 132,
+                      "id": 179,
                       "name": "PlayerAdded",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 112,
+                      "referencedDeclaration": 159,
                       "src": "534:11:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$_t_uint256_$returns$__$",
                         "typeString": "function (address,address,uint256,uint256)"
                       }
                     },
-                    "id": 142,
+                    "id": 189,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1545,14 +1545,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 143,
+                  "id": 190,
                   "nodeType": "EmitStatement",
                   "src": "529:82:2"
                 }
               ]
             },
             "documentation": null,
-            "id": 145,
+            "id": 192,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1560,15 +1560,15 @@
             "name": "addPlayer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 117,
+              "id": 164,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 114,
+                  "id": 161,
                   "name": "_playerAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 145,
+                  "scope": 192,
                   "src": "366:22:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1577,7 +1577,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 113,
+                    "id": 160,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "366:7:2",
@@ -1591,10 +1591,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 116,
+                  "id": 163,
                   "name": "_playerBet",
                   "nodeType": "VariableDeclaration",
-                  "scope": 145,
+                  "scope": 192,
                   "src": "390:15:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1603,7 +1603,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 115,
+                    "id": 162,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "390:4:2",
@@ -1620,19 +1620,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 118,
+              "id": 165,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "416:0:2"
             },
-            "scope": 146,
+            "scope": 193,
             "src": "347:271:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "internal"
           }
         ],
-        "scope": 147,
+        "scope": 194,
         "src": "91:529:2"
       }
     ],
@@ -1644,5 +1644,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-07-31T16:00:13.292Z"
+  "updatedAt": "2018-08-06T22:31:00.593Z"
 }

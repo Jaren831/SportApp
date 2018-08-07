@@ -64,7 +64,7 @@ function ClippedDrawer(props) {
       </Drawer>
       </div>
       <main className={classes.content}>
-         <MatchListContainer />
+         <MatchListContainer currentAddress={props.currentAddress}/>
       </main>
     </div>
   );

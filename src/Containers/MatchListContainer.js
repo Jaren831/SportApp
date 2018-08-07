@@ -2,7 +2,6 @@ import React from 'react';
 import MatchList from '../Components/MatchList.js';
 import MatchFactoryContract from '../../build/contracts/MatchFactory.json';
 import MatchContract from '../../build/contracts/Match.json';
-
 import getWeb3 from '../utils/getWeb3.js';
 
 class MatchListContainer extends React.Component {
@@ -10,7 +9,7 @@ class MatchListContainer extends React.Component {
     super(props)
 
     this.state = {
-      matchFactoryInstance: null,
+      matchFactoryAddress: props.currentAddress,
       matches: [],
       web3: null
     }
@@ -35,7 +34,7 @@ class MatchListContainer extends React.Component {
     const matchFactory = contract(MatchFactoryContract)
     matchFactory.setProvider(this.state.web3.currentProvider)
 
-    matchFactory.deployed().then((instance) => {
+    matchFactory.at(this.state.matchFactoryAddress).then((instance) => {
       this.setState({
         matchFactoryInstance: instance
       })
