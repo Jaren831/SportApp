@@ -9,9 +9,9 @@ contract Team is PlayerFactory {
     uint playerCut;
     address winnerAddress;
     address houseAddress;
-    event TeamPaid(address from, address to, uint amount);
-    event HousePaid(address from, address to, uint amount);
-    event PlayerPaid(address from, address to, uint amount);
+    event TeamPaid(address from, address to, uint amount, uint contractBalance);
+    event HousePaid(address from, address to, uint amount, uint contractBalance);
+    event PlayerPaid(address from, address to, uint amount, uint contractBalance);
 
     constructor(address _owner, string _teamName, address _houseAddress) public {
         owner = _owner;
@@ -34,19 +34,19 @@ contract Team is PlayerFactory {
             Team winner = Team(_winnerAddress);
             winner.payoutPlayers.value(address(this).balance);
         } 
-        emit TeamPaid(address(this), _winnerAddress, address(this).balance);
+        emit TeamPaid(address(this), _winnerAddress, address(this).balance, address(this).balance);
     }
 
     function payoutPlayers() public payable {
         //sends house 10% cut
         houseAddress.transfer((address(this).balance).div(10)); 
-        emit HousePaid(address(this), owner, (address(this).balance).div(10));
+        emit HousePaid(address(this), owner, (address(this).balance).div(10), address(this).balance);
 
         //sends player their winnings based on ratio. theirBet / pool * total
         for (uint i = 0; i < players.length; i.add(1)) {
             playerCut = ((players[i].playerBet).div((address(this).balance).mul(address(this).balance)));
             (players[i].playerAddress).transfer(playerCut);
-            emit PlayerPaid(address(this), players[i].playerAddress, playerCut);
+            emit PlayerPaid(address(this), players[i].playerAddress, playerCut, address(this).balance);
         }
     }
 }

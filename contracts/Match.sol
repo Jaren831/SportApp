@@ -11,6 +11,8 @@ contract Match is TeamFactory {
     string winner;
     address winnerAddress;
 
+    event WinnerRecieved(address winnerAddress, string winner);
+
     constructor(string _team1Name, string _team2Name, address _owner) public {
         owner = _owner;
         team1 = _team1Name;
@@ -21,6 +23,7 @@ contract Match is TeamFactory {
         //will get winner from oraclize
         winner = "china";
         winnerAddress = teams["china"];
+        emit WinnerRecieved(winnerAddress, winner);
         return winnerAddress;
     }
 

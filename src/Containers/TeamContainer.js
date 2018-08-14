@@ -31,6 +31,7 @@ class TeamContainer extends Component {
 }
 
   instantiateContract() {
+    //need to make each event independant
     const contract = require('truffle-contract')
     const team = contract(TeamContract)
     team.setProvider(this.state.web3.currentProvider)
@@ -38,6 +39,7 @@ class TeamContainer extends Component {
       const playerAddedEvent = instance.allEvents({fromBlock: 0, toBlock: 'latest'});
       playerAddedEvent.watch((error, result) => {
           if (!error) {
+            console.log(result)
             this.setState({
               bet: this.state.web3.utils.fromWei(result.args.contractBalance.toString(), 'ether')
             });          

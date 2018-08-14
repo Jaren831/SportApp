@@ -74,7 +74,7 @@ class MatchContainer extends Component {
                 {from: accounts[0], gasPrice: 20000000000}
             ).then((result) => {
                 console.log(result)
-                this.state.matchInstance.sendMatchResult(result, {from: accounts[0], gasPrice: 20000000000})
+                this.state.matchInstance.sendMatchResult(result.logs[0].args.winnerAddress, {from: accounts[0], gasPrice: 20000000000})
             })
         })
     }
