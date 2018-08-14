@@ -51,6 +51,7 @@
   "dependencies": {
     "@material-ui/core": "^1.4.2",
     "@material-ui/icons": "^2.0.0",
+    "@optionality.io/clone-factory": "^0.1.6",
     "dotenv": "^2.0.0",
     "drizzle": "^1.2.2",
     "drizzle-react": "^1.1.1",

@@ -1,12 +1,15 @@
 pragma solidity ^0.4.24;
 
 import "./TeamFactory.sol";
+import "./Team.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 contract Match is TeamFactory {
+    using SafeMath for uint256;
     string team1;
     string team2;
     string winner;
+    address winnerAddress;
 
     constructor(string _team1Name, string _team2Name, address _owner) public {
         owner = _owner;
@@ -14,28 +17,21 @@ contract Match is TeamFactory {
         team2 = _team2Name;
     }
 
-    function getWinnerAddress() public onlyOwner returns(address) {
+    function getMatchResult() public returns(address){
         //will get winner from oraclize
         winner = "china";
-        return teams[winner];
+        winnerAddress = teams["china"];
+        return winnerAddress;
     }
 
-    function getOwnerAddress() public onlyOwner returns(address) {
-        
-    }
-
-    function sendMatchResult(string _winner) public onlyOwner {
-        for (uint i = 0; i < teamAddresses.length; i++) {
-            Team(teamAddresses[i]).payoutTeam(getMatchResult());
+    function sendMatchResult(address _winnerAddress) public {
+        if (teamAddresses[0] != winnerAddress) {
+            Team current1Team = Team(teamAddresses[0]);
+            current1Team.payoutWinner(_winnerAddress);
+        } else {
+            Team current2Team = Team(teamAddresses[1]);
+            current2Team.payoutWinner(_winnerAddress);
         }
-    }
-
-    function payOutHouse(address _winnerAddress) public onlyOwner {
-        Team(_winnerAddress).payoutHouse(owner);
-    }
-
-    function payOutPlayers(address _winnerAddress) public onlyOwner {
-        Team(_winnerAddress).payoutPlayers();
     }
 }
 

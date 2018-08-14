@@ -10,11 +10,11 @@ contract TeamFactory is Ownable {
     address[] teamAddresses;
 
     function createTeam(string _team1, string _team2) public onlyOwner {
-        address newTeam1Address = new Team(address(this),_team1);
+        address newTeam1Address = new Team(address(this), _team1, owner);
         teamAddresses.push(newTeam1Address);
         teams[_team1] = newTeam1Address;
 
-        address newTeam2Address = new Team(address(this), _team2);
+        address newTeam2Address = new Team(address(this), _team2, owner);
         teamAddresses.push(newTeam2Address);
         teams[_team2] = newTeam2Address;
 

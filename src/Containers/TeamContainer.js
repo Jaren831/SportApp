@@ -58,8 +58,7 @@ class TeamContainer extends Component {
         from: accounts[0], 
         gasPrice: 20000000000, 
         value: this.state.web3.utils.toWei(
-          (this.refs.placeBet.value).toString(), 'ether'
-        )
+          (this.refs.placeBet.value).toString(), 'ether')
       })
     })
   }

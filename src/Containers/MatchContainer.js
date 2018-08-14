@@ -19,7 +19,7 @@ class MatchContainer extends Component {
         }
 
         this.instantiateContract = this.instantiateContract.bind(this);
-        this.onWinnerSubmit = this.onWinnerSubmit.bind(this);
+        this.onResolveMatch = this.onResolveMatch.bind(this);
     
     }
 
@@ -63,24 +63,20 @@ class MatchContainer extends Component {
         })
     }
 
-    onWinnerSubmit = (event) => {
+    onResolveMatch = (event) => {
         //get winner address. check against addreses, send to winner
         event.preventDefault()
+        const contract = require('truffle-contract')
+        const match = contract(MatchContract)
+        match.setProvider(this.state.web3.currentProvider)
         this.state.web3.eth.getAccounts((error, accounts) => {
-          this.state.matchInstance.sendMatchResult(
-            this.refs.winner.value, 
-            {from: accounts[0], gasPrice: 20000000000
-          }).then(() => {
-            return this.state.matchInstance.payOutHouse(
+            this.state.matchInstance.getMatchResult(
                 {from: accounts[0], gasPrice: 20000000000}
-            )
-          }).then(() => {
-            return this.state.matchInstance.payOutPlayers(
-                {from: accounts[0], gasPrice: 20000000000}
-            )
-          })
+            ).then((result) => {
+                console.log(result)
+                this.state.matchInstance.sendMatchResult(result, {from: accounts[0], gasPrice: 20000000000})
+            })
         })
-
     }
 
     render() {
@@ -101,7 +97,7 @@ class MatchContainer extends Component {
                         Winner:
                         <input type="text" ref="winner" />
                     </label>
-                    <input type="submit" onClick={ this.onWinnerSubmit } value="Submit" />
+                    <input type="submit" onClick={ this.onResolveMatch } value="Submit" />
                 </form>
             </div>
         );
