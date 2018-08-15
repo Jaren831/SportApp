@@ -3,7 +3,6 @@ import TeamContainer from '../Containers/TeamContainer.js';
 import '../css/Match.css';
 
 const Match = (props) => {
-    console.log(props)
     return (
         <div className="Match">
             <div>
@@ -15,6 +14,7 @@ const Match = (props) => {
             </div>
             <div>
                 <div>{props.team1Name} vs {props.team2Name}</div>
+                <div>Total: {props.matchContractBalance} ETH</div>
                 <div>{props.matchContractAddress}</div>
             </div>
             <div>
@@ -28,4 +28,4 @@ const Match = (props) => {
     )
 };
 
-export default Match
+export default Match;

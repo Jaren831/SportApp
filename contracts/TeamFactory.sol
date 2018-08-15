@@ -20,8 +20,6 @@ contract TeamFactory is Ownable {
         address teamAddress;
         string teamName;
         uint teamBalance;
-        address[] playerAddress;
-        uint[] playerBet;
     }
 
     function createTeam(string _team1, string _team2) public onlyOwner {

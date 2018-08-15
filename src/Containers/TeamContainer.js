@@ -11,30 +11,47 @@ class TeamContainer extends Component {
       web3: null,
       teamName: props.teamName,
       teamContractAddress: props.teamContractAddress,
-      teamContractBalance: props.teamContractBalance
+      teamContractBalance: props.teamContractBalance,
+      teamContractInstance: null
     }
+    this.placeBet = this.placeBet.bind(this)
+    this.instantiateContract = this.instantiateContract.bind(this)
+  }
 
+  componentDidMount() {
     getWeb3
     .then(results => {
-      console.log('Succesful finding web3.')
-      this.setState({
-        web3: results.web3
-      })
+        this.setState({
+            web3: results.web3
+        })
+        this.instantiateContract()
     })
     .catch(() => {
-      console.log('Error finding web3.')
+        console.log('Error finding web3.')
     })    
+  }
 
-    this.placeBet = this.placeBet.bind(this)
+  instantiateContract() {
+    const contract = require('truffle-contract')
+    const teamContract = contract(TeamContract)
+    teamContract.setProvider(this.state.web3.currentProvider)
+    teamContract.at(this.state.teamContractAddress).then((instance) => {
+      this.setState({
+        teamContractInstance: instance
+      })   
+    })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ 
+      teamContractBalance: nextProps.teamContractBalance 
+    });  
   }
 
   placeBet = (event) => {
     event.preventDefault()
-    const contract = require('truffle-contract')
-    const teamContract = contract(TeamContract)
-    teamContract.setProvider(this.state.web3.currentProvider)
     this.state.web3.eth.getAccounts((error, accounts) => {
-      teamContract.at(this.state.teamContractAddress).placeBet({
+      this.state.teamContractInstance.placeBet({
         from: accounts[0], 
         gasPrice: 20000000000, 
         value: this.state.web3.utils.toWei(

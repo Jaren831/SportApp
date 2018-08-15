@@ -12,7 +12,7 @@ contract Match is TeamFactory {
     address houseAddress;
 
 
-    event PlayerAdded(address playerAddress, address teamAddress, uint playerBet, uint contractBalance);
+    event PlayerAdded(address playerAddress, uint playerBet, address teamAddress, uint teamBalance, uint contractBalance);
     event WinnerReceived(address winnerAddress, string winnerTeamName);
     event HousePaid(address from, address to, uint amount, uint contractBalance);
     event PlayerPaid(address from, address to, uint amount, uint contractBalance);
@@ -27,8 +27,9 @@ contract Match is TeamFactory {
 
     function addPlayer(address _playerAddress) public payable {
         Player memory newPlayer = Player(_playerAddress, msg.value);
-        players[msg.sender].push(newPlayer);
-        emit PlayerAdded(_playerAddress, msg.sender, msg.value, address(this).balance);
+        players[msg.sender].push(newPlayer);      
+        teams[msg.sender].teamBalance = teams[msg.sender].teamBalance.add(msg.value);
+        emit PlayerAdded(_playerAddress, msg.value, msg.sender, teams[msg.sender].teamBalance, address(this).balance);
     }
 
     function getMatchResult() public {
@@ -40,12 +41,12 @@ contract Match is TeamFactory {
 
     function payoutHouse() public onlyOwner {
         //sends house 10% cut
-        houseAddress.transfer((address(this).balance).div(10)); 
+        houseAddress.transfer(address(this).balance.div(10)); 
         emit HousePaid(address(this), houseAddress, (address(this).balance).div(10), address(this).balance);
     }
 
     function payoutPlayers() public onlyOwner {
-        for (uint i = 0; i < players[winnerAddress].length; i.add(1)) {
+        for (uint i = 0; i < players[winnerAddress].length; i = i.add(1)) {
             players[winnerAddress][i].playerAddress.transfer(
                 players[winnerAddress][i].playerBet.div(teams[winnerAddress].teamBalance).mul(address(this).balance)
             );
