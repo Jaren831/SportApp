@@ -69,7 +69,6 @@ class MatchListContainer extends React.Component {
         this.refs.team2.value, 
         {from: accounts[0], gasPrice: 20000000000}
       ).then((result) => {
-        console.log(result)
         match.at(result.logs[0].args.matchAddress).then((instance) => {
           return instance.createTeam(
             this.refs.team1.value, 

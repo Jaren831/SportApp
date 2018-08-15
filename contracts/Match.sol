@@ -1,7 +1,6 @@
 pragma solidity ^0.4.24;
 
 import "./TeamFactory.sol";
-import "./Team.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 contract Match is TeamFactory {
@@ -10,30 +9,52 @@ contract Match is TeamFactory {
     string team2;
     string winner;
     address winnerAddress;
+    address houseAddress;
 
-    event WinnerRecieved(address winnerAddress, string winner);
+
+    event PlayerAdded(address playerAddress, address teamAddress, uint playerBet, uint contractBalance);
+    event WinnerReceived(address winnerAddress, string winnerTeamName);
+    event HousePaid(address from, address to, uint amount, uint contractBalance);
+    event PlayerPaid(address from, address to, uint amount, uint contractBalance);
+    // event MatchClosed();
 
     constructor(string _team1Name, string _team2Name, address _owner) public {
         owner = _owner;
+        houseAddress = _owner;
         team1 = _team1Name;
         team2 = _team2Name;
     }
 
-    function getMatchResult() public returns(address){
-        //will get winner from oraclize
-        winner = "china";
-        winnerAddress = teams["china"];
-        emit WinnerRecieved(winnerAddress, winner);
-        return winnerAddress;
+    function addPlayer(address _playerAddress) public payable {
+        Player memory newPlayer = Player(_playerAddress, msg.value);
+        players[msg.sender].push(newPlayer);
+        emit PlayerAdded(_playerAddress, msg.sender, msg.value, address(this).balance);
     }
 
-    function sendMatchResult(address _winnerAddress) public {
-        if (teamAddresses[0] != winnerAddress) {
-            Team current1Team = Team(teamAddresses[0]);
-            current1Team.payoutWinner(_winnerAddress);
-        } else {
-            Team current2Team = Team(teamAddresses[1]);
-            current2Team.payoutWinner(_winnerAddress);
+    function getMatchResult() public {
+        //will get winner from oraclize
+        winner = "china";
+        winnerAddress = teamMappings[winner];
+        emit WinnerReceived(winnerAddress, winner);
+    }
+
+    function payoutHouse() public onlyOwner {
+        //sends house 10% cut
+        houseAddress.transfer((address(this).balance).div(10)); 
+        emit HousePaid(address(this), houseAddress, (address(this).balance).div(10), address(this).balance);
+    }
+
+    function payoutPlayers() public onlyOwner {
+        for (uint i = 0; i < players[winnerAddress].length; i.add(1)) {
+            players[winnerAddress][i].playerAddress.transfer(
+                players[winnerAddress][i].playerBet.div(teams[winnerAddress].teamBalance).mul(address(this).balance)
+            );
+            emit PlayerPaid(
+                address(this), 
+                players[winnerAddress][i].playerAddress, 
+                players[winnerAddress][i].playerBet.div(teams[winnerAddress].teamBalance).mul(address(this).balance), 
+                address(this).balance
+            );
         }
     }
 }

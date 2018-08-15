@@ -9,18 +9,18 @@ class MatchContainer extends Component {
 
         this.state = {
             web3: null,
-            matchAddress: props.address,
-            matchInstance: null,
-            team1Address: null,
+            matchContractAddress: props.address,
+            matchContractInstance: null,
             team1Name: null,
-            team2Address: null,
+            team1ContractAddress: null,
+            team1ContractBalance: 0,
             team2Name: null,
-            active: true
+            team2ContractAddress: null,
+            team2ContractBalance: 0,
+            open: true
         }
-
         this.instantiateContract = this.instantiateContract.bind(this);
         this.onResolveMatch = this.onResolveMatch.bind(this);
-    
     }
 
     componentDidMount() {
@@ -38,23 +38,39 @@ class MatchContainer extends Component {
 
     instantiateContract() {
         const contract = require('truffle-contract')
-        const match = contract(MatchContract)
-        match.setProvider(this.state.web3.currentProvider)
-
-        match.at(this.state.matchAddress).then((instance) => {
+        const matchContract = contract(MatchContract)
+        matchContract.setProvider(this.state.web3.currentProvider)
+        matchContract.at(this.state.matchContractAddress).then((instance) => {
             this.setState({
-                matchInstance: instance
+                matchContractInstance: instance
             })
-            const teamCreateEvent = this.state.matchInstance.allEvents({fromBlock: 0, toBlock: 'latest'});
-            teamCreateEvent.watch((error, result) => {
+            const matchContractEvents = this.state.matchContractInstance.allEvents({fromBlock: 0, toBlock: 'latest'});
+            matchContractEvents.watch((error, result) => {
                 if (!error) {
-                    if (result.event === "TeamCreated") {
-                        this.setState ({
-                            team1Address: result.args.team1Address,
-                            team1Name: result.args.team1Name,
-                            team2Address: result.args.team2Address,
-                            team2Name: result.args.team2Name
-                        })
+                    switch(result.event) {
+                        case "TeamCreated": 
+                            this.setState ({
+                                team1ContractAddress: result.args.team1Address,
+                                team1Name: result.args.team1Name,
+                                team2ContractAddress: result.args.team2Address,
+                                team2Name: result.args.team2Name
+                            })
+                            break;
+                        case "PlayerAdded": 
+                            if (result.args.teamAddress === this.state.team1ContractAddress) {
+                                console.log("hello")
+                                this.setState({
+                                    team1ContractBalance: this.state.web3.utils.fromWei(result.args.contractBalance.toString(), 'ether')
+                                })                            
+                            } else {
+                                this.setState({
+                                    team2ContractBalance: this.state.web3.utils.fromWei(result.args.contractBalance.toString(), 'ether')
+                                })
+                            }
+                            break;                          
+                        default: return(
+                            null
+                        )
                     }
                 } else {
                     console.log(error)
@@ -63,34 +79,35 @@ class MatchContainer extends Component {
         })
     }
 
-    onResolveMatch = (event) => {
+    onResolveMatch = () => {
         //get winner address. check against addreses, send to winner
-        event.preventDefault()
-        const contract = require('truffle-contract')
-        const match = contract(MatchContract)
-        match.setProvider(this.state.web3.currentProvider)
         this.state.web3.eth.getAccounts((error, accounts) => {
-            this.state.matchInstance.getMatchResult(
+            this.state.matchContractnstance.getMatchResult(
                 {from: accounts[0], gasPrice: 20000000000}
             ).then((result) => {
                 console.log(result)
-                this.state.matchInstance.sendMatchResult(result.logs[0].args.winnerAddress, {from: accounts[0], gasPrice: 20000000000})
+                this.state.matchContractInstance.payoutHouse({from: accounts[0], gasPrice: 20000000000})
+            }).then((result) => {
+                console.log(result)
+                this.state.matchContractInstance.payoutPlayers({from: accounts[0], gasPrice: 20000000000})
             })
         })
     }
 
     render() {
-        if (!this.state.team1Address && this.state.team2Address === null) {
+        if (!this.state.team1ContractAddress && this.state.team2ContractAddress === null) {
             return null;
         }
         return (
             <div>
                 <Match 
-                    team1Address={this.state.team1Address}
-                    team2Address={this.state.team2Address}
+                    matchContractAddress={this.state.matchContractAddress}
                     team1Name={this.state.team1Name}
+                    team1ContractAddress={this.state.team1ContractAddress}
+                    team1ContractBalance={this.state.team1ContractBalance}
                     team2Name={this.state.team2Name}
-                    matchAddress={this.state.matchAddress}
+                    team2ContractAddress={this.state.team2ContractAddress}
+                    team2ContractBalance={this.state.team2ContractBalance}
                 />
                 <form>
                     <label>

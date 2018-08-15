@@ -3,22 +3,25 @@ import TeamContainer from '../Containers/TeamContainer.js';
 import '../css/Match.css';
 
 const Match = (props) => {
+    console.log(props)
     return (
         <div className="Match">
             <div>
                 <TeamContainer
-                    address={props.team1Address}
-                    name={props.team1Name}
+                    teamName={props.team1Name}
+                    teamContractAddress={props.team1ContractAddress}
+                    teamContractBalance={props.team1ContractBalance}
                 />   
             </div>
             <div>
                 <div>{props.team1Name} vs {props.team2Name}</div>
-                <div>{props.matchAddress}</div>
+                <div>{props.matchContractAddress}</div>
             </div>
             <div>
                 <TeamContainer
-                    address={props.team2Address}
-                    name={props.team2Name}
+                    teamName={props.team2Name}
+                    teamContractAddress={props.team2ContractAddress}
+                    teamContractBalance={props.team2ContractBalance}
                 />  
             </div>
         </div>

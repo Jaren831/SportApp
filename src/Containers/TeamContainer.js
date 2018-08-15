@@ -9,9 +9,9 @@ class TeamContainer extends Component {
 
     this.state = {
       web3: null,
-      address: props.address,
-      name: props.name,
-      bet: 0
+      teamName: props.teamName,
+      teamContractAddress: props.teamContractAddress,
+      teamContractBalance: props.teamContractBalance
     }
 
     getWeb3
@@ -20,43 +20,21 @@ class TeamContainer extends Component {
       this.setState({
         web3: results.web3
       })
-      this.instantiateContract()
     })
     .catch(() => {
       console.log('Error finding web3.')
     })    
 
-    this.instantiateContract = this.instantiateContract.bind(this)
     this.placeBet = this.placeBet.bind(this)
-}
-
-  instantiateContract() {
-    //need to make each event independant
-    const contract = require('truffle-contract')
-    const team = contract(TeamContract)
-    team.setProvider(this.state.web3.currentProvider)
-    team.at(this.state.address).then((instance) => {
-      const playerAddedEvent = instance.allEvents({fromBlock: 0, toBlock: 'latest'});
-      playerAddedEvent.watch((error, result) => {
-          if (!error) {
-            console.log(result)
-            this.setState({
-              bet: this.state.web3.utils.fromWei(result.args.contractBalance.toString(), 'ether')
-            });          
-          } else {
-            console.log(error)
-          }
-      })     
-    })
   }
 
   placeBet = (event) => {
     event.preventDefault()
     const contract = require('truffle-contract')
-    const team = contract(TeamContract)
-    team.setProvider(this.state.web3.currentProvider)
+    const teamContract = contract(TeamContract)
+    teamContract.setProvider(this.state.web3.currentProvider)
     this.state.web3.eth.getAccounts((error, accounts) => {
-      team.at(this.state.address).placeBet({
+      teamContract.at(this.state.teamContractAddress).placeBet({
         from: accounts[0], 
         gasPrice: 20000000000, 
         value: this.state.web3.utils.toWei(
@@ -69,9 +47,9 @@ class TeamContainer extends Component {
     return (
       <div>
         <Team 
-          name={this.state.name}
-          bet={this.state.bet}
-          address={this.state.address}
+          teamName={this.state.teamName}
+          teamContractBalance={this.state.teamContractBalance}
+          teamContractAddress={this.state.teamContractAddress}
         />
         <form>
           <label>
