@@ -42,7 +42,7 @@ contract Match is TeamFactory {
     function payoutHouse() public onlyOwner {
         //sends house 10% cut
         houseAddress.transfer(address(this).balance.div(10)); 
-        emit HousePaid(address(this), houseAddress, (address(this).balance).div(10), address(this).balance);
+        emit HousePaid(address(this), houseAddress, address(this).balance.div(10), address(this).balance);
     }
 
     function payoutPlayers() public onlyOwner {

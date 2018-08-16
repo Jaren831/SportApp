@@ -19,6 +19,7 @@ class MatchContainer extends Component {
             team2Name: null,
             team2ContractAddress: null,
             team2ContractBalance: 0,
+            winner: "TBD",
             latestBlock: 0,
             open: true
         }
@@ -74,7 +75,13 @@ class MatchContainer extends Component {
                                     matchContractBalance: this.state.web3.utils.fromWei(result.args.contractBalance.toString(), 'ether')
                                 })
                             }
-                            break;                          
+                            break;
+                        case "WinnerReceived": 
+                            this.setState({
+                                latestBlock: result.blockNumber,
+                                winner: result.args.winnerTeamName
+                            })
+                            break;                           
                         default: return(
                             null
                         )
@@ -93,10 +100,14 @@ class MatchContainer extends Component {
                 {from: accounts[0], gasPrice: 20000000000}
             ).then((result) => {
                 console.log(result)
-                this.state.matchContractInstance.payoutHouse({from: accounts[0], gasPrice: 20000000000}, (result) => {
-                    console.log(result)
-                    this.state.matchContractInstance.payoutPlayers({from: accounts[0], gasPrice: 20000000000})
-                })
+                this.state.matchContractInstance.payoutHouse(
+                    {from: accounts[0], gasPrice: 20000000000}
+                )
+            }).then((result) => {
+                console.log(result)
+                this.state.matchContractInstance.payoutPlayers(
+                    {from: accounts[0], gasPrice: 20000000000}
+                )
             })
         })
     }
@@ -116,6 +127,7 @@ class MatchContainer extends Component {
                     team2Name={this.state.team2Name}
                     team2ContractAddress={this.state.team2ContractAddress}
                     team2ContractBalance={this.state.team2ContractBalance}
+                    winner={this.state.winner}
                 />
                 <Button onClick={this.onResolveMatch}>Resolve</Button>
             </div>

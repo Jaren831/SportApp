@@ -15,6 +15,7 @@ const Match = (props) => {
             <div>
                 <div>{props.team1Name} vs {props.team2Name}</div>
                 <div>Total: {props.matchContractBalance} ETH</div>
+                <div>Winner: {props.winner}</div>
                 <div>{props.matchContractAddress}</div>
             </div>
             <div>
