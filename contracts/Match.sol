@@ -45,18 +45,19 @@ contract Match is TeamFactory {
         emit HousePaid(address(this), houseAddress, address(this).balance.div(10), address(this).balance);
     }
 
-    function payoutPlayers() public onlyOwner {
-        for (uint i = 0; i < players[winnerAddress].length; i = i.add(1)) {
-            players[winnerAddress][i].playerAddress.transfer(
+    function payoutPlayers(address _playerAddress) public onlyOwner {
+        //should not do for loop. get array in js then iterate and call payoutplayers ***_playerAddress
+        // for (uint i = 0; i < players[winnerAddress].length; i = i.add(1)) {
+        players[winnerAddress][i]._playerAddress.transfer(
                 players[winnerAddress][i].playerBet.div(teams[winnerAddress].teamBalance).mul(address(this).balance)
             );
-            emit PlayerPaid(
-                address(this), 
-                players[winnerAddress][i].playerAddress, 
-                players[winnerAddress][i].playerBet.div(teams[winnerAddress].teamBalance).mul(address(this).balance), 
-                address(this).balance
+        emit PlayerPaid(
+            address(this), 
+            players[winnerAddress][i]._playerAddress, 
+            players[winnerAddress][i].playerBet.div(teams[winnerAddress].teamBalance).mul(address(this).balance), 
+            address(this).balance
             );
-        }
+        
     }
 }
 
