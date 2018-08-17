@@ -7,7 +7,7 @@ class App extends Component {
 
     this.state = {
       web3: null,
-      currentAddress: "0xd87972ac0dbca5add0a800eb606eddd5bfb6a6d3"
+      currentAddress: "0xf840a59daf97cf92e9e0a8a78d3f43c40daeabdc"
     }
 
     this.instantiateApp = this.instantiateApp.bind(this);

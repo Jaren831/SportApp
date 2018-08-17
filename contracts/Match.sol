@@ -43,7 +43,7 @@ contract Match is TeamFactory {
     function payoutPlayer(address _playerAddress, uint _playerBet, uint _teamBalance) public onlyOwner {
         //should not do for loop. get array in js then iterate and call payoutplayers ***_playerAddress
         // for (uint i = 0; i < players[winnerAddress].length; i = i.add(1)) {
-        _playerAddress.transfer((_playerBet.mul(address(this).balance).div(_teamBalance));
+        _playerAddress.transfer((_playerBet * address(this).balance) / _teamBalance);
         emit PlayerPaid(address(this), _playerAddress, _playerBet, address(this).balance);
     }
 }

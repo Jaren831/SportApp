@@ -130,16 +130,11 @@ class MatchContainer extends Component {
                 {from: accounts[0], gasPrice: 20000000000}
             ).then((result) => {
                 console.log(result)
-                this.state.matchContractInstance.payoutHouse(
-                    {from: accounts[0], gasPrice: 20000000000}
-                )
+                this.state.matchContractInstance.payoutHouse({from: accounts[0], gasPrice: 20000000000})
             }).then((result) => {
                 switch(this.state.winnerAddress) {
                     case this.state.team1ContractAddress:
                         for (let i = 0; i < this.state.team1Players.length; i++) {
-                            console.log(this.state.team1Players[i].playerAddress)
-                            console.log(this.state.team1Players[i].playerBet)
-                            console.log(this.state.team1ContractBalance)
                             this.state.matchContractInstance.payoutPlayer(
                                 this.state.team1Players[i].playerAddress,
                                 this.state.team1Players[i].playerBet,
