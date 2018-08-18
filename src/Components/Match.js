@@ -1,6 +1,7 @@
 import React from 'react';
 import TeamContainer from '../Containers/TeamContainer.js';
 import '../css/Match.css';
+import Button from '../../node_modules/@material-ui/core/Button';
 
 const Match = (props) => {
     return (
@@ -17,6 +18,7 @@ const Match = (props) => {
                 <div>Total: {props.matchContractBalance} ETH</div>
                 <div>Winner: {props.winner}</div>
                 <div>{props.matchContractAddress}</div>
+                <Button variant="outlined" onClick={props.resolveMatch}>Resolve</Button>
             </div>
             <div>
                 <TeamContainer

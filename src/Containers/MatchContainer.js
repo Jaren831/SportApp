@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Match from '../Components/Match.js';
 import MatchContract from '../../build/contracts/Match.json';
 import getWeb3 from '../utils/getWeb3.js';
-import Button from '../../node_modules/@material-ui/core/Button';
 
 class MatchContainer extends Component {
     constructor(props) {
@@ -26,6 +25,7 @@ class MatchContainer extends Component {
             latestBlock: 0,
             open: true
         }
+        this.payout = this.payout.bind(this)
         this.instantiateContract = this.instantiateContract.bind(this);
         this.onResolveMatch = this.onResolveMatch.bind(this);
     }
@@ -67,7 +67,7 @@ class MatchContainer extends Component {
                         case "PlayerAdded": 
                             console.log(result)
                             if (result.args.teamAddress === this.state.team1ContractAddress) {
-                                const newArray = this.state.team1Players.slice()
+                                let newArray = this.state.team1Players.slice()
                                 newArray.push({
                                     playerAddress: result.args.playerAddress,
                                     playerBet: result.args.playerBet
@@ -79,7 +79,7 @@ class MatchContainer extends Component {
                                     matchContractBalance: this.state.web3.utils.fromWei(result.args.contractBalance.toString(), 'ether')
                                 })                            
                             } else {
-                                const newArray = this.state.team2Players.slice()
+                                let newArray = this.state.team2Players.slice()
                                 newArray.push({
                                     playerAddress: result.args.playerAddress,
                                     playerBet: result.args.playerBet
@@ -93,12 +93,15 @@ class MatchContainer extends Component {
                             }
                             break;
                         case "WinnerReceived": 
-                            console.log(result)
-                            this.setState({
-                                latestBlock: result.blockNumber,
-                                winner: result.args.winnerTeamName,
-                                winnerAddress: result.args.winnerAddress
-                            })
+                            if (this.state.open === true) {
+                                console.log(result)
+                                this.setState({
+                                    latestBlock: result.blockNumber,
+                                    winner: result.args.winnerTeamName,
+                                    winnerAddress: result.args.winnerAddress,
+                                    open: false
+                                })
+                            }
                             break;
                         case "HousePaid": 
                             console.log(result)
@@ -109,7 +112,10 @@ class MatchContainer extends Component {
                         case "MatchClosed": 
                             console.log(result)
                             this.setState({
-                                matchContractBalance: this.state.web3.utils.fromWei(result.args.finalMatchBalance.toString(), 'ether')
+                                matchContractBalance: this.state.web3.utils.fromWei(result.args.finalMatchBalance.toString(), 'ether'),
+                                team1ContractBalance: 0,
+                                team2ContractBalance: 0
+
                             })
                             break;                             
                         default: return(
@@ -124,14 +130,21 @@ class MatchContainer extends Component {
     }
 
     onResolveMatch = () => {
-        //get winner address. check against addreses, send to winner
+        //get winner address. 
         this.state.web3.eth.getAccounts((error, accounts) => {
             this.state.matchContractInstance.getMatchResult(
+                {from: accounts[0], gasPrice: 20000000000} 
+            ).then((result) => {
+                this.payout()
+            })
+        })
+    }
+
+    payout = () => {
+        this.state.web3.eth.getAccounts((error, accounts) => {
+            this.state.matchContractInstance.payoutHouse(
                 {from: accounts[0], gasPrice: 20000000000}
             ).then((result) => {
-                console.log(result)
-                this.state.matchContractInstance.payoutHouse({from: accounts[0], gasPrice: 20000000000})
-            }).then((result) => {
                 switch(this.state.winnerAddress) {
                     case this.state.team1ContractAddress:
                         for (let i = 0; i < this.state.team1Players.length; i++) {
@@ -140,9 +153,7 @@ class MatchContainer extends Component {
                                 this.state.team1Players[i].playerBet,
                                 this.state.web3.utils.toWei((this.state.team1ContractBalance).toString(), 'ether'),
                                 {from: accounts[0], gasPrice: 20000000000}
-                            ).then((result) => {
-                                console.log(result)
-                            })
+                            )
                         }
                         break;
                     case this.state.team2ContractAddress:
@@ -152,9 +163,7 @@ class MatchContainer extends Component {
                                 this.state.team2Players[i].playerBet,
                                 this.state.web3.utils.toWei((this.state.team2ContractBalance).toString(), 'ether'),
                                 {from: accounts[0], gasPrice: 20000000000}
-                            ).then((result) => {
-                                console.log(result)
-                            })
+                            )
                         }
                         break;
                     default: return(
@@ -181,8 +190,8 @@ class MatchContainer extends Component {
                     team2ContractAddress={this.state.team2ContractAddress}
                     team2ContractBalance={this.state.team2ContractBalance}
                     winner={this.state.winner}
+                    resolveMatch={this.onResolveMatch}
                 />
-                <Button onClick={this.onResolveMatch}>Resolve</Button>
             </div>
         );
     }

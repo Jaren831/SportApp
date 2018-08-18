@@ -1,15 +1,20 @@
 pragma solidity ^0.4.24;
 
-import "./TeamFactory.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
+import "./Team.sol";
 
-contract Match is TeamFactory {
+
+contract Match is Ownable {
     using SafeMath for uint256;
     string team1;
     string team2;
     string winner;
     address winnerAddress;
+    mapping(string => address) teamMappings;
 
+
+    event TeamCreated(address team1Address, string team1Name, address team2Address, string team2Name);  
     event PlayerAdded(address playerAddress, uint playerBet, address teamAddress, uint teamBalance, uint contractBalance);
     event WinnerReceived(address winnerAddress, string winnerTeamName);
     event HousePaid(address from, address to, uint amount, uint contractBalance);
@@ -20,6 +25,14 @@ contract Match is TeamFactory {
         owner = _owner;
         team1 = _team1;
         team2 = _team2;
+    }
+
+    function createTeam(string _team1, string _team2) public onlyOwner {
+        address newTeam1Address = new Team(_team1, address(this));
+        teamMappings[_team1] = newTeam1Address;
+        address newTeam2Address = new Team(_team2, address(this));
+        teamMappings[_team2] = newTeam2Address;
+        emit TeamCreated(newTeam1Address, _team1, newTeam2Address, _team2);
     }
 
     function addPlayer(address _playerAddress, uint _teamBalance) public payable {

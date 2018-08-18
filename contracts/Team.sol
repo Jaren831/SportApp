@@ -1,10 +1,10 @@
 pragma solidity ^0.4.24;
 
 import "./Match.sol";
-import "./PlayerFactory.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
-contract Team is PlayerFactory {
+contract Team is Ownable {
     using SafeMath for uint256;
     string teamName;
     uint teamBalance;
