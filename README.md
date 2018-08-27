@@ -2,9 +2,12 @@
 
 Sports betting decentralized application built using Ethereum smart contracts.
 
+![Imgur](https://i.imgur.com/q0hTPv6.png)
+
+
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine to check it up. As of 8/26/2018 only tracks one sport, left drawer not functional.
 
 ### Prerequisites
 
