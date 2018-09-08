@@ -9,7 +9,7 @@ class MatchListContainer extends React.Component {
     super(props)
 
     this.state = {
-      matchFactoryAddress: props.currentAddress,
+      // matchFactoryAddress: props.currentAddress,
       matches: [],
       web3: null
     }
@@ -34,7 +34,8 @@ class MatchListContainer extends React.Component {
     const matchFactory = contract(MatchFactoryContract)
     matchFactory.setProvider(this.state.web3.currentProvider)
 
-    matchFactory.at(this.state.matchFactoryAddress).then((instance) => {
+    // matchFactory.at(this.state.matchFactoryAddress).then((instance) => {
+    matchFactory.deployed().then((instance) => {
       this.setState({
         matchFactoryInstance: instance
       })
