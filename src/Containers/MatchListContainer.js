@@ -11,6 +11,8 @@ class MatchListContainer extends React.Component {
     this.state = {
       // matchFactoryAddress: props.currentAddress,
       matches: [],
+      userAddress: null,
+      matchfactoryInstance: null,
       web3: null
     }
 
