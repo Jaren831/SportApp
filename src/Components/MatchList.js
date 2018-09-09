@@ -6,18 +6,18 @@ const MatchList = (props) => {
     const matchContainers = props.matches.map(match => {
         return (
             <div key={match.address}>
-              <MatchContainer
-                  address={match.address}
-                  team1={match.team1}
-                  team2={match.team2}/>
+                <MatchContainer
+                    address={match.address}
+                    team1={match.team1}
+                    team2={match.team2} />
             </div>
         )
-      });
-      return (
-          <div>
-              {matchContainers}
-          </div>
-      );
+    });
+    return (
+        <div>
+            {matchContainers}
+        </div>
+    );
 }
 
 export default MatchList

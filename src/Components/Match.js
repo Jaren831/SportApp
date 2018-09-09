@@ -2,10 +2,11 @@ import React from 'react';
 import TeamContainer from '../Containers/TeamContainer.js';
 import '../css/Match.css';
 import Button from '../../node_modules/@material-ui/core/Button';
+import { Card } from '@material-ui/core';
 
 const Match = (props) => {
     return (
-        <div className="Match">
+        <Card className="Match">
             <div>
                 <TeamContainer
                     teamName={props.team1Name}
@@ -27,7 +28,7 @@ const Match = (props) => {
                     teamContractBalance={props.team2ContractBalance}
                 />  
             </div>
-        </div>
+        </Card>
     )
 };
 

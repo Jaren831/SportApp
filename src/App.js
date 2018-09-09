@@ -6,10 +6,14 @@ import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import SportList from './Components/SportList';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import BuldIcon from '@material-ui/icons/Build';
+import List from '@material-ui/core/List';
 import MatchListContainer from './Containers/MatchListContainer';
 
-const drawerWidth = 250;
+const drawerWidth = '100%';
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -45,6 +49,7 @@ class App extends Component {
       sportData: null,
       currentSport: "home"
     }
+    this.onClickHandler = this.onClickHandler.bind(this);
   }
 
   componentWillMount() {
@@ -57,6 +62,14 @@ class App extends Component {
         console.log(response);
       })
   };
+
+  onClickHandler = (name) => {
+    console.log(name)
+    this.setState({
+      currentSport: name
+    })
+    
+  }
 
   render() {
     const { classes } = this.props;
@@ -75,14 +88,44 @@ class App extends Component {
         <div>
           <Drawer
             variant="permanent"
-            classes={{ paper: classes.drawerPaper }}
-          >
+            classes={{ paper: classes.drawerPaper }}>
             <div className={classes.toolbar} />
-            <SportList onClick={this.onClickHandler} />
+            <List>
+              <ListItem button onClick={this.onClickHandler.bind(this, "home")}>
+                <ListItemIcon>
+                  <BuldIcon />
+                </ListItemIcon>
+                <ListItemText primary="Home" />
+              </ListItem>
+              <ListItem button onClick={this.onClickHandler.bind(this, "lol")}>
+                <ListItemIcon>
+                  <BuldIcon />
+                </ListItemIcon>
+                <ListItemText primary="League of Legends" />
+              </ListItem>
+              <ListItem button onClick={this.onClickHandler.bind(this, "overwatch")}>
+                <ListItemIcon>
+                  <BuldIcon />
+                </ListItemIcon>
+                <ListItemText primary="Overwatch" />
+              </ListItem>
+              <ListItem button onClick={this.onClickHandler.bind(this, "dota2")}>
+                <ListItemIcon>
+                  <BuldIcon />
+                </ListItemIcon>
+                <ListItemText primary="DOTA 2" />
+              </ListItem>
+              <ListItem button onClick={this.onClickHandler.bind(this, "cs:go")}>
+                <ListItemIcon>
+                  <BuldIcon />
+                </ListItemIcon>
+                <ListItemText primary="CS:GO" />
+              </ListItem>
+            </List>
           </Drawer>
         </div>
         <main className={classes.content}>
-          <MatchListContainer />
+          <MatchListContainer sport={this.state.currentSport}/>
         </main>
       </div>
     )

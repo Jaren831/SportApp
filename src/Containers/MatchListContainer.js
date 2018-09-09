@@ -17,15 +17,15 @@ class MatchListContainer extends React.Component {
     }
 
     getWeb3
-    .then(results => {
-      this.setState({
-        web3: results.web3
+      .then(results => {
+        this.setState({
+          web3: results.web3
+        })
+        this.instantiateContract()
       })
-      this.instantiateContract()
-    })
-    .catch(() => {
-      console.log('Error finding web3.')
-    })
+      .catch(() => {
+        console.log('Error finding web3.')
+      })
 
     this.instantiateContract = this.instantiateContract.bind(this);
     this.onMatchSubmit = this.onMatchSubmit.bind(this);
@@ -41,23 +41,24 @@ class MatchListContainer extends React.Component {
       this.setState({
         matchFactoryInstance: instance
       })
-      const matchFactoryEvent = this.state.matchFactoryInstance.allEvents({fromBlock: 0, toBlock: 'latest'});
+      const matchFactoryEvent = this.state.matchFactoryInstance.allEvents({ fromBlock: 0, toBlock: 'latest' });
       matchFactoryEvent.watch((error, result) => {
         if (!error) {
-            if (result.event === "MatchCreated") {
-                let newArray = this.state.matches.slice();
-                newArray.push({
-                    address: result.args.matchAddress, 
-                    team1: result.args.team1, 
-                    team2: result.args.team2});
-                this.setState({
-                    matches: newArray
-                });          
-            }
+          if (result.event === "MatchCreated") {
+            let newArray = this.state.matches.slice();
+            newArray.push({
+              address: result.args.matchAddress,
+              team1: result.args.team1,
+              team2: result.args.team2
+            });
+            this.setState({
+              matches: newArray
+            });
+          }
         } else {
-            console.log(error)
+          console.log(error)
         }
-      }) 
+      })
     })
   }
 
@@ -68,15 +69,15 @@ class MatchListContainer extends React.Component {
     match.setProvider(this.state.web3.currentProvider)
     this.state.web3.eth.getAccounts((error, accounts) => {
       this.state.matchFactoryInstance.createMatch(
-        this.refs.team1.value, 
-        this.refs.team2.value, 
-        {from: accounts[0], gasPrice: 20000000000}
+        this.refs.team1.value,
+        this.refs.team2.value,
+        { from: accounts[0], gasPrice: 20000000000 }
       ).then((result) => {
         match.at(result.logs[0].args.matchAddress).then((instance) => {
           return instance.createTeam(
-            this.refs.team1.value, 
-            this.refs.team2.value, 
-            {from: accounts[0], gasPrice: 20000000000}
+            this.refs.team1.value,
+            this.refs.team2.value,
+            { from: accounts[0], gasPrice: 20000000000 }
           )
         })
       })
@@ -95,9 +96,9 @@ class MatchListContainer extends React.Component {
             Team 2:
             <input type="text" ref="team2" />
           </label>
-          <input type="submit" onClick={ this.onMatchSubmit } value="Submit" />
+          <input type="submit" onClick={this.onMatchSubmit} value="Submit" />
         </form>
-        <MatchList 
+        <MatchList
           matches={this.state.matches}
         />
       </div>
